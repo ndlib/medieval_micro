@@ -1,0 +1,18 @@
+<dl class="attribute-list">
+  <dt>
+    Name:
+  </dt>
+  <dd>
+    <%= @collection.name %>
+  </dd>
+  <dt>
+    Notes:
+  </dt>
+  <dd>
+    <%= @collection.notes %>
+  </dd>
+</dl>
+
+<div class="show-actions">
+  <%= link_to 'Edit', edit_admin_collection_path(@collection), :class => 'button' %>
+</div>

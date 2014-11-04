@@ -1,0 +1,24 @@
+<dl class="attribute-list">
+  <dt>
+    Name:
+  </dt>
+  <dd>
+    <%= @city.name %>
+  </dd>
+  <dt>
+    Name variants:
+  </dt>
+  <dd>
+    <%= @city.name_variants %>
+  </dd>
+  <dt>
+    Notes:
+  </dt>
+  <dd>
+    <%= @city.notes %>
+  </dd>
+</dl>
+
+<div class="show-actions">
+  <%= link_to 'Edit', edit_admin_city_path(@city), :class => 'button' %>
+</div>

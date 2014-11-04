@@ -1,0 +1,11 @@
+<%= semantic_form_for [:admin, @classification] do |form| %>
+  <%= form.inputs do %>
+    <%= form.input :name %>
+    <%= form.input :replacement_classification_id,
+                   :label => "Delete this Classification and replace it with:",
+                   :as => :select,
+                   :collection => Classification.all
+    %>
+  <% end %>
+  <%= form.action :submit, :as => :button %>
+<% end %>

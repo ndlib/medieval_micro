@@ -1,0 +1,2 @@
+module FacsimilesHelper
+end

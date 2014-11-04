@@ -1,0 +1,12 @@
+<dl class="attribute-list">
+  <dt>Name:</dt>
+  <dd><%= @classification.name %></dd>
+</dl>
+<hr />
+<h3>Facsimiles with this Text Classification</h3>
+<%= render :partial => '/admin/facsimiles/listing', :locals => { :facsimiles => @classification.facsimiles } %>
+
+<div>
+  <%= link_to 'Edit this Text Classification', edit_admin_classification_path(@classification), :class => 'button' %>
+  <%= link_to 'Text Classifications Listing', admin_classifications_path, :class => 'button' %>
+</div>

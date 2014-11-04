@@ -1,0 +1,12 @@
+<dl class="attribute-list">
+  <dt>Name:</dt>
+  <dd><%= @country.name %></dd>
+</dl>
+<hr />
+<h3>Facsimiles with this Country</h3>
+<%= render :partial => '/admin/facsimiles/listing', :locals => { :facsimiles => @country.facsimiles } %>
+
+<div>
+  <%= link_to 'Edit this Country of Origin', edit_admin_country_path(@country), :class => 'button' %>
+  <%= link_to 'Countries of Origin Listing', admin_countries_path, :class => 'button' %>
+</div>

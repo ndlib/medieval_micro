@@ -1,0 +1,36 @@
+<h2>Listing Collections</h2>
+
+<div id="listing-nav" class="span-24 last">
+  <% if can? :create, Collection %>
+    <%= link_to 'New Collection', new_admin_collection_path, :class => 'button' %>
+  <% end %>
+</div>
+
+<table class="listing">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th class="action-links">&nbsp;</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @collections.each do |collection| %>
+      <tr class="<%= cycle 'odd', 'even' %>">
+        <td><%=h collection.name %></td>
+        <td class="action-links">
+          <%= icon_show_admin_link(collection) %>
+          <%= icon_edit_admin_link(collection) if can? :edit, Collection %>
+          <%= icon_destroy_admin_link(
+            collection,
+            "Are you sure you want to destroy this collection?\nThis action cannot be undone."
+            ) if can? :destroy, Collection
+          %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<% if can? :create, Collection %>
+  <%= link_to 'New Collection', new_admin_collection_path, :class => 'button' %>
+<% end %>

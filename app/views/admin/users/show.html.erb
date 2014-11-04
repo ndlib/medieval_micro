@@ -1,0 +1,32 @@
+<dl class="attribute-list">
+  <dt>
+    First Name:
+  </dt>
+  <dd>
+    <%= @user.first_name %>
+  </dd>
+  <dt>
+    Last Name:
+  </dt>
+  <dd>
+    <%= @user.last_name %>
+  </dd>
+  <dt>
+    netID:
+  </dt>
+  <dd>
+    <%= @user.username %>
+  </dd>
+  <dt>
+    Roles
+  </dt>
+<% @user.roles.each do |role| %>
+  <dd>
+  <%= role.name %>
+  </dd>
+<% end %>
+</dl>
+
+<div class="show-actions">
+  <%= link_to 'Edit', edit_user_path(@user), :class => 'button' %>
+</div>

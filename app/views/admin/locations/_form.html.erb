@@ -1,0 +1,4 @@
+<%= semantic_form_for [:admin, @location] do |form| %>
+  <%= form.inputs :name, :notes %>
+  <%= form.action :submit, :as => :button %>
+<% end %>

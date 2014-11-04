@@ -1,0 +1,18 @@
+<dl class="attibute-list">
+  <dt>
+    Name:
+  </dt>
+  <dd>
+    <%= @location.name %>
+  </dd>
+  <dt>
+    Notes:
+  </dt>
+  <dd>
+    <%= @location.notes %>
+  </dd>
+</dl>
+
+<div class="show-actions">
+  <%= link_to 'Edit', edit_admin_location_path(@location), :class => 'button' %>
+</div>

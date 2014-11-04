@@ -1,0 +1,8 @@
+<%= semantic_form_for [:admin, @library] do |form| %>
+  <%= form.inputs do %>
+    <%= form.input :name %>
+    <%= form.input :name_variants %>
+    <%= form.input :city_id, :as => :select, :collection => City.ordered.all, :hint => "You can create a #{link_to 'new city', new_admin_city_path} if you don't see the one you're interested in.".html_safe %>
+  <% end %>
+  <%= form.action :submit, :as => :button %>
+<% end %>

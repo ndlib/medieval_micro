@@ -1,0 +1,36 @@
+<h2>Listing Locations</h2>
+
+<div id="listing-nav" class="span-24 last">
+  <% if can? :create, Location %>
+    <%= link_to 'New Location', new_admin_location_path, :class => 'button' %>
+  <% end %>
+</div>
+
+<table class="listing">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th class="action-links">&nbsp;</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @locations.each do |location| %>
+      <tr class="<%= cycle 'odd', 'even' %>">
+        <td><%=h location.name %></td>
+        <td class="action-links">
+          <%= icon_show_admin_link(location) %>
+          <%= icon_edit_admin_link(location) if can? :edit, Location %>
+          <%= icon_destroy_admin_link(
+            location,
+            "Are you sure you want to destroy this location?\nThis action cannot be undone."
+            ) if can? :destroy, Location
+          %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<% if can? :create, Location %>
+  <%= link_to 'New Location', new_admin_location_path, :class => 'button' %>
+<% end %>

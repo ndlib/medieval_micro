@@ -1,0 +1,66 @@
+<h2>Listing Microfilms</h2>
+
+<div id="listing-nav" class="span-24 last">
+  <%= form_tag(admin_microfilms_path, :method => "get", :id => "search", :class => "span-20" ) do %>
+    <fieldset>
+      <legend>Microfilms Search</legend>
+      <ol>
+        <li>
+          <label>Shelf Mark:</label>
+          <%= text_field_tag :q, h(params[:q]) %>
+        </li>
+        <li>
+          <label>Collection:</label>
+          <select id="collection" name="collection">
+            <option value="">All Collections</option>
+            <%= options_from_collection_for_select(Collection.ordered.all, 'id', 'name', params[:collection].to_i) %>
+          </select>
+        </li>
+      </ol>
+      <fieldset class="buttons">
+        <%= submit_tag "Go", :class => 'button' %>
+        <input type="reset" class="button reset refresh" value="Reset" />
+      </fieldset>
+    </fieldset>
+  <% end %>
+  <% if can? :create, Microfilm %>
+    <%= link_to 'New Microfilm', new_admin_microfilm_path, :class => 'button' %>
+  <% end %>
+  <%= paginate @microfilms %>
+</div>
+
+<div class="span-24 last">
+  <table class="listing">
+    <thead>
+      <tr>
+        <th>City</th>
+        <th>Library</th>
+        <th>Shelf Mark</th>
+        <th class="action-links">&nbsp;</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @microfilms.each do |microfilm| %>
+      <tr class="<%= cycle 'odd', 'even' %>">
+        <td><%=h microfilm.library_city_name %></td>
+        <td><%=h microfilm.library_name      %></td>
+        <td><%=h microfilm.shelf_mark        %></td>
+        <td class="action-links">
+          <%= icon_show_admin_link(microfilm) %>
+          <%= icon_edit_admin_link(microfilm) if can? :edit, Microfilm %>
+          <%= icon_destroy_admin_link(
+            microfilm,
+            "Are you sure you want to destroy this microfilm?\nThis action cannot be undone."
+            ) if can? :destroy, Microfilm
+          %>
+        </td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+
+<% if can? :create, Microfilm %>
+  <%= link_to 'New Microfilm', new_admin_microfilm_path, :class => 'button' %>
+<% end %>
+<%= paginate @microfilms %>
+</div>

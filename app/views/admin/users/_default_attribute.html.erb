@@ -1,0 +1,17 @@
+<li class="optional">
+  <% if false %>
+  <%= form.label :default_attribute_type_value, form.object.default_attribute_type.attribute_name.titleize %>
+  <% if form.object.default_attribute_type.is_model_id? %>
+    <%= form.collection_select :value,
+                               form.object.default_attribute_type.model_name.camelize.constantize.ordered.all,
+                               :id,
+                               :collection_name,
+                               :prompt => 'Please make a selection',
+                               :include_blank => true,
+                               :selected => form.object.value.to_i %>
+  <% else %>
+    <%= form.text_field :value, :size => 38 %>
+  <% end %>
+  <%= form.hidden_field :default_attribute_type_id, :value => form.object.default_attribute_type.id %>
+  <% end %>
+</li>

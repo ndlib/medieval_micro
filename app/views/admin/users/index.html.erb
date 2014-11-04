@@ -1,0 +1,44 @@
+<h2>Listing Users</h2>
+
+<div id="listing-nav" class="span-24 last">
+  <% if can? :create, User %>
+    <%= link_to 'New User', new_admin_user_path, :class => 'button' %>
+  <% end %>
+</div>
+
+<table class="listing">
+  <thead>
+    <tr>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>netID</th>
+      <th>Roles</th>
+    <% if can? :masquerade, User %>
+      <th class="masquerade-link">Masquerade</th>
+    <% end %>
+      <th class="action-links">&nbsp;</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @users.each do |user| %>
+    <tr>
+      <td><%=h user.first_name %></td>
+      <td><%=h user.last_name  %></td>
+      <td><%=h user.username   %></td>
+      <td><%=h user.role_names %></td>
+    <% if can? :masquerade, User %>
+      <td class="masquerade-link"><%= icon_masquerade_link(user) %></td>
+    <% end %>
+      <td class="action-links">
+        <%= icon_show_link(user) %>
+        <%= icon_edit_link(user) if can? :edit, user %>
+        <%= icon_destroy_link([:admin, user], "Are you sure you want to destroy this user?\nThis action cannot be undone.") if can? :destroy, user %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<% if can? :create, User %>
+  <%= link_to 'New User', new_admin_user_path, :class => 'button' %>
+<% end %>

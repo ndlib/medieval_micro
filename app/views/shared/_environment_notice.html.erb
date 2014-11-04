@@ -1,0 +1,6 @@
+<% unless Rails.env == "production" || Rails.env == "development" %>
+  <div id="environment_notice">
+    <h1><%= "This is the #{Rails.env.titleize} environment for this application. Changes made to the data will not be preserved." %></h1>
+    <h1>Please use the <a href="http://microfilms-and-facsimiles.medieval.library.nd.edu/">Production environment</a> for general use.</h1>
+  </div>
+<% end %>

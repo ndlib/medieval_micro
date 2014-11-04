@@ -1,0 +1,73 @@
+<dl class="attribute-list">
+  <dt>Title:</dt>
+  <dd><%= @facsimile.title %></dd>
+  <dt>Alternate names:</dt>
+  <dd><%= @facsimile.alternate_names %></dd>
+  <dt>Library:</dt>
+  <% @facsimile.libraries.each do |library| %>
+  <dd><%= link_to library.name, admin_library_path(library) %></dd>
+  <% end %>
+  <dt>Shelf mark:</dt>
+  <dd><%= @facsimile.shelf_mark %></dd>
+  <dt>Origin:</dt>
+  <dd><%= @facsimile.origin %></dd>
+  <dt>Country of Origin:</dt>
+  <dd><%= @facsimile.country_of_origin %></dd>
+  <dt>Dimensions:</dt>
+  <dd><%= @facsimile.dimensions %></dd>
+  <dt>Century keywords:</dt>
+  <dd><%= @facsimile.century_keywords %></dd>
+  <dt>Date description:</dt>
+  <dd><%= @facsimile.date_description %></dd>
+  <dt>Date Ranges:</dt>
+  <% @facsimile.date_ranges.each do |date_range| %>
+  <dd><%= link_to date_range.name, admin_date_range_path(date_range) %></dd>
+  <% end %>
+  <dt>Languages:</dt>
+  <% @facsimile.languages.each do |language| %>
+  <dd><%= link_to language.name, admin_language_path(language) %></dd>
+  <% end %>
+  <dt>Author:</dt>
+  <dd><%= @facsimile.author %></dd>
+  <dt>Content:</dt>
+  <dd><%= @facsimile.content %></dd>
+  <dt>Hand:</dt>
+  <dd><%= @facsimile.hand %></dd>
+  <dt>Illuminations:</dt>
+  <dd><%= @facsimile.has_illuminations %></dd>
+  <dt>Type of decoration:</dt>
+  <dd><%= @facsimile.type_of_decoration %></dd>
+  <dt>Musical notation:</dt>
+  <dd><%= @facsimile.has_musical_notation %></dd>
+  <dt>Type of musical notation:</dt>
+  <dd><%= @facsimile.type_of_musical_notation %></dd>
+</dl>
+<hr />
+<dl>
+  <dt>Call number:</dt>
+  <dd><%= @facsimile.call_number %></dd>
+  <dt>Commentary volume:</dt>
+  <dd><%= @facsimile.has_commentary_volume %></dd>
+  <dt>Nature of facsimile:</dt>
+  <dd><%= @facsimile.nature_of_facsimile %></dd>
+  <dt>Series:</dt>
+  <dd><%= @facsimile.series %></dd>
+  <dt>Publication date:</dt>
+  <dd><%= @facsimile.publication_date %></dd>
+  <dt>Place of publication:</dt>
+  <dd><%= @facsimile.place_of_publication %></dd>
+  <dt>Publisher:</dt>
+  <dd><%= @facsimile.publisher %></dd>
+  <dt>Printer:</dt>
+  <dd><%= @facsimile.printer %></dd>
+  <dt>Notes:</dt>
+  <dd><%= @facsimile.notes %></dd>
+  <dt>Bibliography:</dt>
+  <dd><%= @facsimile.bibliography %></dd>
+</dl>
+
+<div>
+  <%= link_to 'Edit',               edit_admin_facsimile_path(@facsimile), :class => 'button' %>
+  <%= link_to 'Facsimiles Listing', admin_facsimiles_path,                 :class => 'button' %>
+  <%= link_to 'View in Catalog',    catalog_path(@facsimile.solr_id),      :class => 'button' %>
+</div>

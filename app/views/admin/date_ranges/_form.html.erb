@@ -1,0 +1,8 @@
+<%= semantic_form_for [:admin, @date_range]  do |form| %>
+  <%= form.inputs do %>
+    <%= form.input :code %>
+    <%= form.input :start_date %>
+    <%= form.input :end_date %>
+  <% end %>
+  <%= form.action :submit, :as => :button %>
+<% end %>

@@ -1,0 +1,38 @@
+<div class="span-20 append-4 last">
+  <%= semantic_form_for [:admin, @facsimile] do |form| %>
+    <%= form.inputs :title => 'Origional Work' do %>
+      <%= form.input :title %>
+      <%= form.input :alternate_names %>
+      <%= form.input :libraries, :label_method => :name_with_city, :hint => "You can create a #{link_to 'new library', new_admin_library_path} if you don't see the one you're interested in.".html_safe, :input_html => { :class => 'multiselect' } %>
+      <%= form.input :shelf_mark %>
+      <%= form.input :origin %>
+      <%= form.input :country, :label => "Country of Origin", :hint => "You can create a #{link_to 'new country of origin', new_admin_country_path} if you don't see the one you're interested in.".html_safe %>
+      <%= form.input :dimensions %>
+      <%= form.input :date_ranges, :input_html => { :class => 'multiselect' } %>
+      <%= form.input :century_keywords %>
+      <%= form.input :date_description %>
+      <%= form.input :languages, :hint => "You can create a #{link_to 'new language', new_admin_language_path} if you don't see the one you're interested in.".html_safe, :input_html => { :class => 'multiselect' } %>
+      <%= form.input :author %>
+      <%= form.input :content,                  :input_html => { :class => 'autogrow', :rows => 2 } %>
+      <%= form.input :hand,                     :input_html => { :class => 'autogrow', :rows => 2 } %>
+      <%= form.input :illuminations %>
+      <%= form.input :type_of_decoration,       :input_html => { :class => 'autogrow', :rows => 2 } %>
+      <%= form.input :musical_notation %>
+      <%= form.input :type_of_musical_notation, :input_html => { :class => 'autogrow', :rows => 2 } %>
+    <% end %>
+    <%= form.inputs :title => 'Facsimile' do %>
+      <%= form.input :call_number %>
+      <%= form.input :commentary_volume %>
+      <%= form.input :nature_of_facsimile,      :input_html => { :class => 'autogrow', :rows => 2 } %>
+      <%= form.input :series %>
+      <%= form.input :publication_date %>
+      <%= form.input :place_of_publication %>
+      <%= form.input :publisher %>
+      <%= form.input :printer %>
+      <%= form.input :notes,                    :input_html => { :class => 'autogrow', :rows => 2 } %>
+      <%= form.input :bibliography,             :input_html => { :class => 'autogrow', :rows => 2 } %>
+      <%= form.input :classifications, :label => "Type of Text", :hint => "You can create a #{link_to 'new Text Classification', new_admin_classification_path} if you don't see the one you're interested in.".html_safe, :input_html => { :class => 'multiselect' } %>
+    <% end %>
+    <%= form.action :submit, :as => :button %>
+  <% end %>
+</div>

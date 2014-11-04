@@ -1,0 +1,11 @@
+<%= semantic_form_for [:admin, @country] do |form| %>
+  <%= form.inputs do %>
+    <%= form.input :name %>
+    <%= form.input :replacement_country_id,
+                   :label => "Delete this Country and replace it with:",
+                   :as => :select,
+                   :collection => Country.all
+    %>
+  <% end %>
+  <%= form.action :submit, :as => :button %>
+<% end %>

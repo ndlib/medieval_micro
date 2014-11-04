@@ -1,0 +1,8 @@
+<%= semantic_form_for [:admin, @city] do |form| %>
+  <%= form.inputs do %>
+    <%= form.input :name, :hint => 'Use the form: CITY NAME IN CAPS, Country' %>
+    <%= form.input :name_variants %>
+    <%= form.input :notes %>
+  <% end %>
+  <%= form.action :submit, as: :button %>
+<% end %>

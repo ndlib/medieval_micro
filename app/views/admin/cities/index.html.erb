@@ -1,0 +1,54 @@
+<h2>Listing Cities</h2>
+
+<div id="listing-nav" class="span-24 last">
+  <%= form_tag(admin_cities_path, :method => "get", :id => "search", :class => "span-10") do %>
+    <fieldset>
+      <legend>City Search</legend>
+      <ol>
+        <li>
+          <label>Name:</label>
+          <%= text_field_tag :q, h(params[:q]) %>
+        </li>
+      </ol>
+      <fieldset class="buttons">
+        <%= submit_tag "Go", :class => 'button' %>
+        <input type="reset" class="button reset refresh" value="Reset" />
+      </fieldset>
+    </fieldset>
+  <% end %>
+
+  <% if can? :create, City %>
+    <%= link_to 'New City', new_admin_city_path, :class => 'button' %>
+  <% end %>
+  <%= paginate @cities %>
+</div>
+
+<table class="listing">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th class="action-links">&nbsp;</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @cities.each do |city| %>
+      <tr class="<%= cycle 'odd', 'even' %>">
+        <td><%=h city.name %></td>
+        <td class="action-links">
+          <%= icon_show_admin_link(city) %>
+          <%= icon_edit_admin_link(city) if can? :edit, City %>
+          <%= icon_destroy_admin_link(
+            city,
+            "Are you sure you want to destroy this city?\nThis action cannot be undone."
+            ) if can? :destroy, City
+          %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<% if can? :create, City %>
+  <%= link_to 'New City', new_admin_city_path, :class => 'button' %>
+<% end %>
+<%= paginate @cities %>

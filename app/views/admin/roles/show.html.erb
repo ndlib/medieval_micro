@@ -1,0 +1,26 @@
+<dl class="attribute-list">
+  <dt>
+    Name:
+  </dt>
+  <dd>
+    <%= @role.name %>
+  </dd>
+  <dt>
+    Users with this Role:
+  </dt>
+  <dd>
+  <% if @role.users.any? %>
+    <ul>
+    <% @role.users.each do |user| %>
+      <li><%= user.full_name %></li>
+    <% end %>
+    </ul>
+  <% else %>
+    <em>No Users have been given this role.</em>
+  <% end %>
+  </dd>
+</dl>
+
+<div class="show-actions">
+  <%= link_to 'Edit', edit_admin_role_path(@role), :class => 'button' %>
+</div>

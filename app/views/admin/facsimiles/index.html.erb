@@ -1,0 +1,15 @@
+<h2>Listing Facsimiles</h2>
+
+<div id="listing-nav" class="span-24 last">
+  <% if can? :create, Facsimile %>
+    <%= link_to 'New Facsimile', new_admin_facsimile_path, :class => 'button' %>
+  <% end %>
+  <%= paginate @facsimiles %>
+</div>
+
+<%= render :partial => 'listing', :locals => { :facsimiles => @facsimiles } %>
+
+<% if can? :create, Facsimile %>
+  <%= link_to 'New Facsimile', new_admin_facsimile_path, :class => 'button' %>
+<% end %>
+<%= paginate @facsimiles %>

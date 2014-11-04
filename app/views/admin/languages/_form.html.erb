@@ -1,0 +1,11 @@
+<%= semantic_form_for [:admin, @language] do |form| %>
+  <%= form.inputs do %>
+    <%= form.input :name %>
+    <%= form.input :replacement_language_id,
+                   :label => "Delete this Language and replace it with:",
+                   :as => :select,
+                   :collection => Language.all
+    %>
+  <% end %>
+  <%= form.action :submit, :as => :button %>
+<% end %>

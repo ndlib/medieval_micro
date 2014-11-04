@@ -1,0 +1,31 @@
+<dl class="attribute-list">
+  <dt>
+    Name:
+  </dt>
+  <dd>
+    <%= @library.name %>
+  </dd>
+  <dt>
+    Name variants:
+  </dt>
+  <dd>
+    <%= @library.name_variants %>
+  </dd>
+  <dt>
+    City:
+  </dt>
+  <dd>
+  <% if @library.city.nil? %>
+    <em>None Provided</em>
+  <% else %>
+    <%= link_to @library.city.name, admin_city_path(@library.city) %>
+  <% end %>
+  </dd>
+</dl>
+<hr />
+<h3>Facsimiles in this Library</h3>
+<%= render :partial => 'admin/facsimiles/listing', :locals => { :facsimiles => @library.facsimiles } %>
+
+<div class="show-actions">
+  <%= link_to 'Edit', edit_admin_library_path(@library), :class => 'button' %>
+</div>

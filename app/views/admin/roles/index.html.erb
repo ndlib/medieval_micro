@@ -1,0 +1,21 @@
+<h1>Listing Roles</h1>
+
+<table class="listing">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th class="action-links">&nbsp;</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @roles.each do |role| %>
+      <tr class="<%= cycle 'odd', 'even' %>">
+        <td><%= role.name %></td>
+        <td class="action-links">
+          <%= icon_show_admin_link(role) %>
+          <%= icon_edit_admin_link(role) if can? :edit, Role %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

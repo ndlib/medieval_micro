@@ -1,0 +1,20 @@
+<%= semantic_form_for [:admin, @user] do |form| %>
+  <%= form.inputs :name => 'Personal Information' do %>
+    <%= form.input :first_name %>
+    <%= form.input :last_name %>
+    <% if @user.new_record? %>
+      <%= form.input :username, :lable => 'netID' %>
+    <% else %>
+      <%= form.input :username, :lable => 'netID', :input_html => { :disabled => true } %>
+    <% end %>
+  <% end %>
+  <%= form.inputs :name => 'Default Attributes' do %>
+    <li class="help">You can specify default attributes for new microfilms.</li>
+    <%= form.fields_for :default_attribute_values do |default_attribute_value_form| %>
+      <%= render :partial => 'default_attribute', :locals => { :form => default_attribute_value_form } %>
+    <% end %>
+  <% end %>
+  <%= form.actions do %>
+    <%= form.action :submit, :as => :button %>
+  <% end %>
+<% end %>

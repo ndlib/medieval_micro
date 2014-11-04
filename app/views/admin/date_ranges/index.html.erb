@@ -1,0 +1,44 @@
+<h2>Listing Date Ranges</h2>
+
+<div id="listing-nav" class="span-24 last">
+<% if can? :create, DateRange %>
+  <%= link_to 'New Date Range', new_admin_date_range_path, :class => 'button' %>
+<% end %>
+</div>
+
+<table class="listing">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Code</th>
+      <th>Start Date</th>
+      <th>End Date</th>
+      <th>Number of Facsimiles</th>
+      <th class="action-links">&nbsp;</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @date_ranges.each do |date_range| %>
+      <tr class="<%= cycle 'odd', 'even' %>">
+        <td><%= date_range.name             %></td>
+        <td><%= date_range.code             %></td>
+        <td><%= date_range.start_date       %></td>
+        <td><%= date_range.end_date         %></td>
+        <td><%= date_range.facsimiles.count %></td>
+        <td class="action-links">
+          <%= icon_show_admin_link(date_range) %>
+          <%= icon_edit_admin_link(date_range) if can? :edit, DateRange %>
+          <%= icon_destroy_admin_link(
+            date_range,
+            "Are you sure you want to destroy this date range?\nThis action cannot be undone."
+            ) if can? :destroy, DateRange
+          %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<% if can? :create, DateRange %>
+  <%= link_to 'New Date Range', new_admin_date_range_path, :class => 'button' %>
+<% end %>

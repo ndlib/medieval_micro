@@ -1,0 +1,56 @@
+<h2>Listing Text Classifications</h2>
+
+<div id="listing-nav" class="span-24 last">
+  <%= form_tag(admin_classifications_path, :method => "get", :id => "search", :class => "span-10") do %>
+    <fieldset>
+      <legend>Classification Search</legend>
+      <ol>
+        <li>
+          <label>Name:</label>
+          <%= text_field_tag :q, h(params[:q]) %>
+        </li>
+      </ol>
+      <fieldset class="buttons">
+        <%= submit_tag "Go", :class => 'button' %>
+        <input type="reset" class="button reset refresh" value="Reset" />
+      </fieldset>
+    </fieldset>
+  <% end %>
+
+  <% if can? :create, Classification %>
+    <%= link_to 'New Text Classification', new_admin_classification_path, :class => 'button' %>
+  <% end %>
+  <%= paginate @classifications %>
+</div>
+
+<table class="listing">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Number of Facsimiles</th>
+      <th class="action-links">&nbsp;</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @classifications.each do |classification| %>
+      <tr class="<%= cycle 'odd', 'even' %>">
+        <td><%= classification.name             %></td>
+        <td><%= classification.facsimiles.count %></td>
+        <td class="action-links">
+          <%= icon_show_admin_link(classification) %>
+          <%= icon_edit_admin_link(classification) if can? :edit, Classification %>
+          <%= icon_destroy_admin_link(
+            classification,
+            "Are you sure you want to destroy this Text Classification?\nThis action cannot be undone."
+            ) if can? :destroy, Classification
+          %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<% if can? :create, Classification %>
+  <%= link_to 'New Text Classification', new_admin_classification_path, :class => 'button' %>
+<% end %>
+<%= paginate @classifications %>

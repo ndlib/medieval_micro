@@ -1,0 +1,12 @@
+<dl class="attribute-list">
+  <dt>Name:</dt>
+  <dd><%= @language.name %></dd>
+</dl>
+<hr />
+<h3>Facsimiles with this Language</h3>
+<%= render :partial => '/admin/facsimiles/listing', :locals => { :facsimiles => @language.facsimiles } %>
+
+<div>
+  <%= link_to 'Edit this Language', edit_admin_language_path(@language), :class => 'button' %>
+  <%= link_to 'Languages Listing', admin_languages_path, :class => 'button' %>
+</div>

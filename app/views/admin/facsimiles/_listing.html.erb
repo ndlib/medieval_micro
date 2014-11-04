@@ -1,0 +1,24 @@
+<table class="listing">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Shelf mark</th>
+      <th>Call number</th>
+      <th class="action-links">&nbsp;</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% facsimiles.each do |facsimile| %>
+      <tr class="<%= cycle 'odd', 'even' %>">
+        <td><%= facsimile.title       %></td>
+        <td><%= facsimile.shelf_mark  %></td>
+        <td><%= facsimile.call_number %></td>
+        <td class="action-links">
+          <%= icon_show_admin_link(facsimile) %>
+          <%= icon_edit_admin_link(facsimile) if can? :edit, Facsimile %>
+          <%= icon_destroy_admin_link(facsimile, "Are you sure you want to destroy this facsimile?\nThis action cannot be undone.") if can? :edit, Facsimile %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

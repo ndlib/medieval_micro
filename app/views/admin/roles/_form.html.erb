@@ -1,0 +1,9 @@
+<%= semantic_form_for [:admin, @role] do |form| %>
+  <%= form.inputs do %>
+    <%= form.input :name, :input_html => { :disabled => true } %>
+    <%= form.input :usernames, :label => 'People with this Role:',
+                               :hint => 'People with this role are listed by NetID. More can be added by name or by NetID using the lookup tool.',
+                               :input_html => { :class => 'multiple-ldap-autocomplete'} %>
+  <% end %>
+  <%= form.action :submit, :as => :button %>
+<% end %>

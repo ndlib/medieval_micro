@@ -1,0 +1,56 @@
+<dl class="attribute-list">
+  <dt>
+    Library:
+  </dt>
+  <dd>
+    <%= @microfilm.library_name %>
+  </dd>
+  <dt>
+    City:
+  </dt>
+  <dd>
+    <%= @microfilm.library_city_name %>
+  </dd>
+  <dt>
+    Shelf mark:
+  </dt>
+  <dd>
+    <%= @microfilm.shelf_mark %>
+  </dd>
+  <dt>
+    Mss name:
+  </dt>
+  <dd>
+    <%= @microfilm.mss_name %>
+  </dd>
+  <dt>
+    Mss note:
+  </dt>
+  <dd>
+    <%= @microfilm.mss_note %>
+  </dd>
+  <dt>
+    Collection:
+  </dt>
+  <dd>
+    <%= @microfilm.collection_name %>
+  </dd>
+  <dt>
+    Reel:
+  </dt>
+  <dd>
+    <%= @microfilm.reel %>
+  </dd>
+  <dt>
+    Hesburgh location:
+  </dt>
+  <dd>
+    <%= @microfilm.location_name %>
+  </dd>
+</dl>
+
+<div>
+  <%= link_to 'Edit',               edit_admin_microfilm_path(@microfilm), :class => 'button' %>
+  <%= link_to 'Microfilms Listing', admin_microfilms_path,                 :class => 'button' %>
+  <%= link_to 'View in Catalog',    catalog_path(@microfilm.solr_id),      :class => 'button' %>
+</div>

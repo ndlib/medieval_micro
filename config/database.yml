@@ -1,0 +1,65 @@
+<%
+  socket = [
+  ENV["BOXEN_MYSQL_SOCKET"],
+  "/var/run/mysql5/mysqld.sock",
+  "/tmp/mysql.sock"
+  ].detect { |f| f && File.exist?(f) }
+
+  port = ENV["BOXEN_MYSQL_PORT"] || "3306"
+%>
+                    
+# Shared Settings
+mysql_settings: &mysql_settings
+  adapter:   mysql2
+  encoding:  utf8
+  reconnect: false
+  pool:      5
+
+mysql_connection: &mysql_connection
+<% if socket %>
+  host: localhost
+  socket: <%= socket %>
+<% else %>
+  host: 127.0.0.1
+  port: <%= port %>
+<% end %>
+
+mysql_user: &mysql_user
+<% if ENV['BOXEN_HOME'] %>
+  username: root
+  password: ''
+<% else %>
+  username: root
+  password: ''
+<% end %>
+
+rails_user: &rails_user
+  <<: *mysql_settings
+  username: rails
+  password: R4ils_d9t9
+
+# Environments
+development:
+  <<: *mysql_settings
+  <<: *mysql_connection
+  <<: *mysql_user
+  database: microfilms_development
+
+# Warning: The database defined as "test" will be erased and
+# re-generated from your development database when you run "rake".
+# Do not set this db to the same as development or production.
+test:
+  <<: *mysql_settings
+  <<: *mysql_connection
+  <<: *mysql_user
+  database: microfilms_test
+
+pre_production:
+  <<: *rails_user
+  database: microfilms_pprd
+  host:     dbpprd.library.nd.edu
+
+production:
+  <<: *rails_user
+  database: microfilms_prod
+  host:     dbprod.library.nd.edu

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%= csrf_meta_tag %>
+    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+    <title><%= controller.controller_name %> : <%= controller.action_name %></title>
+    <%= javascript_include_tag :defaults %>
+    <%= stylesheet_link_tag 'screen', 'style', 'formtastic', 'formtastic_changes', 'jquery-ui', :media => 'screen,projection' %>
+    <%= stylesheet_link_tag 'print',  :media => "print" %>
+    <%= stylesheet_link_tag  %>
+    <!--[if lt IE 8]>
+    <%= stylesheet_link_tag 'ie',     :media => "screen,projection" %>
+    <![endif]-->
+  </head>
+  <body class="admin">
+    <%= render :partial=>'shared/environment_notice' %>
+  <% if is_masquerading? %>
+    <div id="stop-masquerade">
+      <%= link_to 'Stop Masquerade', stop_masquerade_path %>
+    </div>
+  <% end %>
+    <div id="header" class="container">
+      <div class="span-20">
+        <h1 id="title"><%= link_to 'Medieval Microfilms <span class="amp">&amp;</span> Facsimiles Database'.html_safe, root_path %></h2>
+      </div>
+      <div id="utility" class="span-4 last">
+        <%= link_to 'Logout', destroy_user_session_path %>
+        <%= link_to 'Profile', edit_user_path(current_user) %>
+      </div>
+      <div id="nav" class="span-24">
+        <dl>
+          <dt>Resources:</dt>
+          <dd><%= link_to 'Facsimiles', admin_facsimiles_path %></dd>
+          <dd><%= link_to 'Microfilms', admin_microfilms_path %></dd>
+          <dt class="padded">Configuration:</dt>
+          <dd><%= link_to 'Cities', admin_cities_path %></dd>
+          <dd><%= link_to 'Countries of Origin', admin_countries_path %></dd>
+          <% if can? :manage, DateRange %>
+            <dd><%= link_to 'Date Ranges', admin_date_ranges_path %></dd>
+          <% end %>
+          <dd><%= link_to 'Languages', admin_languages_path %></dd>
+          <dd><%= link_to 'Libraries', admin_libraries_path %></dd>
+          <dd><%= link_to 'Text Classifications', admin_classifications_path %></dd>
+          <dt class="clear">ND Info:</dt>
+          <dd><%= link_to 'Collections', admin_collections_path %></dd>
+          <dd><%= link_to 'Locations', admin_locations_path %></dd>
+          <% if can? :manage, Site %>
+            <dt class="padded">Database Management:</dt>
+            <dd><%= link_to 'Roles', admin_roles_path %></dd>
+            <dd><%= link_to 'Users', admin_users_path %></dd>
+          <% end %>
+        </dl>
+      </div>
+    </div>
+
+    <div id="content" class="container">
+      <% if alert %>
+        <div class="span-24 last">
+          <p class="alert"><%= alert %></p>
+        </div>
+      <% end %>
+      <% if notice %>
+        <div class="span-24 last">
+          <p class="notice"><%= notice %></p>
+        </div>
+      <% end %>
+      <%= yield %>
+    </div>
+  </body>
+</html>
