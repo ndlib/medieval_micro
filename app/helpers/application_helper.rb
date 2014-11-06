@@ -2,31 +2,31 @@
 module ApplicationHelper
 
   def icon_masquerade_link(user)
-    link_to image_tag('/assets/stylesheets/icons/masquerade.png', :alt =>'Masquerade', :title => 'Masquerade'), start_masquerade_path(user), { :class => 'icon-link' }
+    link_to image_tag('icons/masquerade.png', :alt =>'Masquerade', :title => 'Masquerade'), start_masquerade_path(user), { :class => 'icon-link' }
   end
 
   def icon_show_admin_link(model)
-    link_to image_tag('/assets/stylesheets/icons/magnifier.png', :alt =>'Show', :title => 'Show'), { :controller => "admin/#{model.class.to_s.tableize}", :action => 'show', :id => model }, { :class => 'icon-link' }
+    link_to image_tag('icons/magnifier.png', :alt =>'Show', :title => 'Show'), { :controller => "admin/#{model.class.to_s.tableize}", :action => 'show', :id => model }, { :class => 'icon-link' }
   end
 
   def icon_show_link(model)
-    link_to image_tag('/assets/stylesheets/icons/magnifier.png', :alt =>'Show', :title => 'Show'), { :controller => model.class.to_s.tableize.to_sym, :action => 'show', :id => model }, { :class => 'icon-link' }
+    link_to image_tag('icons/magnifier.png', :alt =>'Show', :title => 'Show'), { :controller => model.class.to_s.tableize.to_sym, :action => 'show', :id => model }, { :class => 'icon-link' }
   end
 
   def icon_edit_admin_link(model)
-    link_to image_tag('/assets/stylesheets/icons/pencil.png', :alt =>'Edit', :title => 'Edit'), { :controller => "admin/#{model.class.to_s.tableize}", :action => 'edit', :id => model }, { :class => 'icon-link' }
+    link_to image_tag('icons/pencil.png', :alt =>'Edit', :title => 'Edit'), { :controller => "admin/#{model.class.to_s.tableize}", :action => 'edit', :id => model }, { :class => 'icon-link' }
   end
 
   def icon_edit_link(model)
-    link_to image_tag('/assets/stylesheets/icons/pencil.png', :alt =>'Edit', :title => 'Edit'), { :controller => model.class.to_s.tableize.to_sym, :action => 'edit', :id => model }, { :class => 'icon-link' }
+    link_to image_tag('icons/pencil.png', :alt =>'Edit', :title => 'Edit'), { :controller => model.class.to_s.tableize.to_sym, :action => 'edit', :id => model }, { :class => 'icon-link' }
   end
 
   def icon_destroy_link(model, message)
-    link_to image_tag('/assets/stylesheets/icons/bin_closed.png', :alt => 'Destroy', :title => 'Destroy'), model, :confirm => message, :method => :delete, :class => 'icon-link'
+    link_to image_tag('icons/bin_closed.png', :alt => 'Destroy', :title => 'Destroy'), model, :confirm => message, :method => :delete, :class => 'icon-link'
   end
 
   def icon_destroy_admin_link(model, message)
-    link_to image_tag('/assets/stylesheets/icons/bin_closed.png', :alt => 'Destroy', :title => 'Destroy'), { :controller => "admin/#{model.class.to_s.tableize}", :action => 'destroy', :id => model}, :confirm => message, :method => :delete, :class => 'icon-link'
+    link_to image_tag('icons/bin_closed.png', :alt => 'Destroy', :title => 'Destroy'), { :controller => "admin/#{model.class.to_s.tableize}", :action => 'destroy', :id => model}, :confirm => message, :method => :delete, :class => 'icon-link'
   end
 
   def edit_record_link

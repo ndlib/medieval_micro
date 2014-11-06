@@ -1,0 +1,301 @@
+/***********************
+| Blacklight Overrides
+***********************/
+
+h1, h2 {
+  font-family: "Palatino Linotype", Palatino, Palladio, Baskerville, Garamond, "Apple Garamond", "ITC Garamond Narrow", Georgia, serif;
+}
+
+h2 {
+  font-size:1.3em;
+}
+
+/* Top Banner */
+h1.site_title {
+  background-image:none;
+  color:#304962;
+  font-size:1.6em;
+  height:auto;
+  margin:0;
+  width:auto;
+}
+
+h1.site_title a {
+  border: 0px;
+  color:#304962;
+  display:block;
+  height:auto;
+  text-decoration:none;
+  text-indent:0;
+  width:auto;
+}
+
+#spell {
+  border-color:#AAA;
+  border-style:solid;
+  border-width:0 1px;
+  padding: 1em 0.66em 0em 1em;
+}
+
+/* Facet Modal Dialog */
+.ui-dialog #reusableModalDialog {
+  overflow:hidden;
+}
+
+.ui-dialog .ui-dialog-titlebar-close {
+  border-bottom:none;
+}
+
+.ui-dialog #doc4,
+.ui-dialog #bd,
+.ui-dialog #yui-main,
+.ui-dialog #yui-main .yui-b {
+  display:static;
+  float:none;
+  margin:0;
+  padding:0;
+  width:auto;
+}
+
+.ui-dialog #doc4 {
+  background:#FFF;
+  min-width:25em;
+}
+
+.ui-dialog #bd #yui-main .yui-b {
+  border-left:none;
+}
+
+.ui-dialog .facet_extended_list {
+  padding:1em;
+}
+
+.ui-dialog .facet_extended_list h3 {
+  margin-bottom:0;
+}
+
+.ui-dialog ul.facet_extended_list {
+  margin:.5em 0;
+}
+
+.ui-dialog ul.facet_extended_list li {
+  padding-left:1em;
+  text-indent:-1em;
+}
+
+.ui-dialog #hd,
+.ui-dialog #bd .sidebar,
+.ui-dialog #banner,
+.ui-dialog #main-menu,
+.ui-dialog #crumbs,
+.ui-dialog #footer {
+  display:none;
+}
+
+/* Search Controls */
+#search {
+  background-color:#FEFEFE;
+}
+
+#search #q {
+  width:72%;
+}
+
+#search label,
+#search select {
+  display:none;
+}
+
+#search fieldset {
+  padding:0;
+  margin:0;
+}
+
+a.edit-record,
+#search .submit,
+#startOverLink {
+  -moz-border-radius:3px;
+  -webkit-border-radius:3px;
+  background-color:#304962;
+  background-image:none;
+  border-color:#4E9CCF #2D5875 #2D5875 #4E9CCF;
+  border-radius:3px;
+  border-style:solid;
+  border-width:1px;
+  color:#EDF0F4;
+  cursor:pointer;
+  font-family: "Palatino Linotype", Palatino, Palladio, Baskerville, Garamond, "Apple Garamond", "ITC Garamond Narrow", Georgia, serif;
+  font-variant:small-caps;
+  font-weight:bold;
+  margin:0 0.5em;
+  padding:0.1em 0.2em;
+  white-space:nowrap;
+}
+
+#startOverLink {
+  display:inline;
+  font-size:1.3em;
+  line-height:inherit;
+  margin-top:0;
+  padding:0.2em 0.5em;
+  position:absolute;
+  right:0;
+  text-transform:capitalize;
+  top:auto;
+}
+
+a.edit-record {
+  float:right;
+}
+
+a.edit-record:link, a.edit-record:visited {
+  color:#EDF0F4;
+}
+
+.pageEntriesInfo {
+  padding-bottom:2em;
+}
+
+.pagination .page_links .previous_page {
+  display:none;
+}
+
+#spell,
+#sortAndPerPage,
+#appliedParams,
+.pageEntriesInfo,
+.pagination {
+  background-color:#F8F8F3;
+}
+
+#appliedParams,
+#sortAndPerPage {
+  margin-bottom:.5em;
+}
+
+#sortAndPerPage {
+  -moz-border-radius-bottomleft: 4px;
+  -moz-border-radius-bottomright: 4px;
+  -webkit-border-bottom-left-radius: 4px;
+  -webkit-border-bottom-right-radius: 4px;
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+  border-width:0 1px 1px;
+  padding-bottom:1em;
+}
+
+#previousNextDocument a .help {
+  display:none;
+}
+
+.pagination {
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  border-radius: 4px;
+  border-width:1px;
+}
+
+.page_links {
+  margin:0;
+}
+
+.page_links em {
+  font-weight:bold;
+}
+
+.pagination .previous_page {
+  left:0;
+  position:absolute;
+  top:auto;
+  margin-left:.66em;
+}
+
+.blacklight-catalog-index .pagination {
+  text-align:center;
+}
+
+.pagination .next {
+  margin:0 .1em 0 .66em;
+  position:absolute;
+  right:0;
+  text-align:center;
+  top:auto;
+  width:4em;
+}
+
+.pagination .prev {
+  margin:0 .66em 0 .1em;
+  position:absolute;
+  left:0;
+  text-align:center;
+  top:auto;
+  width:6em;
+}
+
+/* Facets */
+#facets h2 {
+  text-indent:-.7em;
+}
+
+#facets h2, #facets h3 {
+  color:#304962;
+  font-weight:bold;
+}
+
+/* Results */
+.index_title {
+  position:relative;
+}
+
+.index_title a .help {
+  color:#304962;
+  font-size:.9em;
+  position:absolute;
+  right:0;
+}
+
+.twiddle:before {
+  content:"";
+  display:inline-block;
+  width: 0;
+  height: 0;
+  margin:0 6px 1px -15px;
+  border-style:solid;
+  border-color:transparent transparent transparent #304962;
+  border-width:4px 0 4px 7px;
+}
+
+.twiddle-open:before {
+  margin:0 7px 1px -14px;
+  border-style:solid;
+  border-color:#304962 transparent transparent transparent;
+  border-width:7px 4px 0 4px;
+}
+
+
+/***********************
+| Local Styles
+***********************/
+
+.amp {
+  color:#B6C6D6;
+  font-size:1.5em;
+  font-style:italic;
+  font-weight:normal;
+  vertical-align:-10%;
+}
+
+dl.defList dt.blacklight-call_number_display,
+dl.defList dd.blacklight-call_number_display {
+  margin-top:3em;
+}
+
+dl.defList dd.blacklight-commentary_volume_facet {
+  margin-bottom:3em;
+}
+
+/* Notice */
+#environment_notice {margin-bottom:15px}
+#environment_notice h1 {margin:0; padding:.5em .2em; font-size:2em; color:#FFF; background:#F00; font-family:"Helvetica Neue",Arial,Helvetica,sans-serif; font-weight:normal; line-height:1; text-align:left;}
+#environment_notice a {color:#CCC}
+#environment_notice a:hover {color:#FFF}

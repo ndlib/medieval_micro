@@ -1,0 +1,73 @@
+h1 {font-family:"Palatino Linotype",Palatino,Palladio,Baskerville,Garamond,"Apple Garamond","ITC Garamond Narrow",Georgia,serif}
+h1 a {cursor:pointer; text-decoration:none}
+
+table {border-collapse:collapse}
+
+input.button, a.button, .formtastic .commit input {border:1px solid;border-color:#E5ECF9 #B6BBC5 #B5BBC5 #E5ECF9; background-color:#D9E6FF}
+a.button {margin-right:3px;padding:4px 6px;display:inline-block;text-decoration:none;font-weight:normal;cursor:pointer}
+input.button, .formtastic .commit input {margin-right:6px;padding:4px 6px;color:#009;font-size:1em;cursor:pointer;overflow:visible}
+
+#nav {margin-bottom:1em;}
+#nav dl {margin:0 0 3em 0}
+#nav dt, #nav dd {float:left}
+#nav dt {margin:0 10px 0 0}
+#nav dd {margin:0 3px}
+#nav .padded {padding-left:30px}
+
+#listing-nav {margin-bottom:10px}
+
+#search label {display:block}
+#search input {margin-right:5px;}
+#search ol {margin:0 0 .5em}
+#search ol input,
+#search ol select {margin-top:0; padding:0.5em 0.2em; width:99%;}
+#search ol select {width:755px;}
+#search li {list-style-type:none}
+#search a.button.new {margin-bottom:10px}
+#search .buttons {border:none; margin:0; padding:0}
+
+#utility a {padding:.3em; float:right}
+
+form div.actions, div.action-bar {margin-bottom:10px}
+th.action-links, td.action-links {padding-right:1em;text-align:right;width:80px}
+
+fieldset dl {margin-bottom:0}
+
+ul.default-attributes {list-style-type:none}
+ul.default-attributes li label {display:inline-block; width:6em}
+ul.default-attributes li select {width:730px}
+
+/* masquerade */
+#stop-masquerade { background-color:#EEE; border-color:#003C8F; border-style:solid; border-width:0 0 2px 2px; display:inline-block; font-size:.9em; padding:.3em 0 .6em; position:absolute; top:0; right:0; text-align:center; width:15em}
+#stop-masquerade a {text-decoration:none; font-weight:bold; font-size:1.3em; padding:.2em 1em}
+
+/* Pagination */
+.pagination {margin:0 0 10px 0}
+.admin .pagination {margin:10px 0}
+.pagination .current, .pagination a {margin-right:2px;padding:1px 4px;display:inline-block;border:1px solid #E5ECF9}
+.pagination a {text-decoration:none}
+.page-text .pagination {margin-top:40px}
+
+/* Notice */
+#environment_notice {margin-bottom:15px}
+#environment_notice h1 {margin-bottom:0; padding:.5em .2em; font-size:2em; color:#FFF; background:#F00}
+#environment_notice a {color:#CCC}
+#environment_notice a:hover {color:#FFF}
+div.help {float:right}
+
+/* Default Rails helper classes */
+.flash-message {color:green}
+.fieldWithErrors {padding:2px; background-color:red; display:table}
+#errorExplanation {width:400px; border:2px solid red; padding:7px; padding-bottom:12px; margin-bottom:20px; background-color:#f0f0f0}
+#errorExplanation h2 {text-align:left; font-weight:bold; padding:5px 5px 5px 15px; font-size:12px; margin:-7px; background-color:#c00; color:#fff}
+#errorExplanation p {color:#333; margin-bottom:0; padding:5px}
+#errorExplanation ul li {font-size:12px; list-style:square}
+
+/* jQuery Selectlist styles */
+.selectlist-list {list-style:none; margin:0; padding:0}
+.selectlist-item {background:#FFF url(icons/delete.png) no-repeat 99% center; border-color:#EEE #CCC #CCC #EEE; border-style:solid; border-width:1px 2px 2px 1px; cursor:pointer; padding:0.2em 0.3em; margin:1px 0}
+.formtastic .selectlist-select {width:578px} /* width of select elements varies from browser to browser */
+.formtastic .selectlist-item {padding:6px; width:563px}
+
+/* Typographical Styles */
+.amp {color:#B6C6D6; font-size:1.5em; font-style:italic; font-weight:normal; vertical-align:-10% }

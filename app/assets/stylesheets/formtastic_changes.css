@@ -1,0 +1,26 @@
+/* -------------------------------------------------------------------------------------------------
+
+Load this stylesheet after formtastic.css in your layouts to override the CSS to suit your needs.
+This will allow you to update formtastic.css with new releases without clobbering your own changes.
+
+For example, to make the inline hint paragraphs a little darker in color than the standard #666:
+
+form.formtastic fieldset > ol > li p.inline-hints { color:#333; }
+
+HINT:
+The following style may be *conditionally* included for improved support on older versions of IE(<8)
+form.formtastic fieldset ol li fieldset legend { margin-left: -6px;}
+
+--------------------------------------------------------------------------------------------------*/
+form.formtastic fieldset > ol > li label { display:block; width:72%; float:none; padding-top:.2em; }
+form.formtastic input, form.formtastic textarea, form.formtastic select { padding:.6em .3em; }
+form.formtastic fieldset.buttons { padding-left:0; }
+form.formtastic select { width:73%; }
+form.formtastic fieldset > ol > li p.inline-hints { color:#666; margin:0.5em 0 0 0; }
+form.formtastic fieldset > ol > li p.inline-errors { margin:.5em 0 0 .5em; }
+form.formtastic fieldset > ol > li.boolean label { padding-left:0; }
+
+form.formtastic fieldset > ol > li fieldset legend { position:relative; float:left; }
+form.formtastic fieldset > ol > li fieldset legend.label label { position:relative; float:left; }
+form.formtastic fieldset > ol > li fieldset ol { padding-left:0; }
+form.formtastic fieldset > ol > li fieldset ol select { width:100%; min-width:5em; }

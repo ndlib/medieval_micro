@@ -11,8 +11,11 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery-ui
 //= require jquery_ujs
 //= require turbolinks
+//= require local 
+//= require underscore-min
 //
 // Required by Blacklight
 //= require blacklight/blacklight
