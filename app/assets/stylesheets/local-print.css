@@ -1,0 +1,60 @@
+/***********************
+| Print Styles
+ ***********************/
+#banner,
+#main-menu,
+#crumbs,
+#hd,
+#search,
+#appliedParams,
+#previousNextDocument,
+#sortAndPerPage,
+#footer,
+.pageEntriesInfo,
+.pagination,
+.sidebar,
+.help {
+  display:none;
+}
+
+html,
+body,
+#doc4,
+#bd,
+#main,
+#doc4 #yui-main,
+#doc4 #yui-main .yui-b {
+  margin:0;
+  padding:0;
+}
+
+html,
+body,
+#doc4 {
+  background:none;
+}
+
+#doc4,
+#doc4 #yui-main .yui-b,
+.document {
+  border:none;
+}
+
+#doc4,
+#doc4 #yui-main {
+  float:none;
+}
+
+dl.defList dt.blacklight-call_number_display,
+dl.defList dd.blacklight-call_number_display {
+  margin-top:1em;
+}
+
+dl.defList dd.blacklight-commentary_volume_facet {
+  margin-bottom:1em;
+}
+
+.document {
+  margin-top:1em;
+  page-break-inside:avoid;
+}

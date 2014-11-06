@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   # Please be sure to impelement current_user and user_session. Blacklight depends on 
   # these methods in order to perform user specific actions. 
 
-  layout 'blacklight'
+  layout :choose_layout
 
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
@@ -49,7 +49,7 @@ END
   end
 
   def deny_action
-    redirect_to( File.join( root_path, '401.html'), :status => 401 )
+    redirect_to new_user_session_path, alert: "You must be logged in to perform this action"
   end
 
   def require_login
