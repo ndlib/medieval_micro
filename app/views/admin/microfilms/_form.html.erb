@@ -1,6 +1,6 @@
 <% if @microfilm.new_record? %>
   <div class="help span-5 notice">
-    You can choose default values for some of the attributes of a new microfilm in <%= link_to "your profile", edit_user_path(current_user) %>.
+    You can choose default values for some of the attributes of a new microfilm in <%= link_to "your profile", edit_admin_user_path(current_user) %>.
   </div>
 <% end %>
 <div class="span-18 last">
