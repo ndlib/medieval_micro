@@ -1,31 +1,39 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="en" class="no-js">
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title><%= "#{@page_title || application_name}".html_safe %> // Hesburgh Libraries // University of Notre Dame</title>
-    <link rel="shortcut icon" href="http://www.library.nd.edu/favicon.ico" />
-    <link href="<%= opensearch_catalog_path %>" title="<%= application_name%>" type="application/opensearchdescription+xml" rel="search"/>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+    <!-- Mobile viewport optimization h5bp.com/ad -->
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+    <!-- Mobile IE allows us to activate ClearType technology for smoothing fonts for easy reading -->
+    <!--[if IEMobile]>
+      <meta http-equiv="cleartype" content="on">
+    <![endif]-->
+
+    <title><%= h(@page_title || application_name) %></title>
+    <link href="<%= opensearch_catalog_path(:format => 'xml', :only_path => false) %>" title="<%= application_name%>" type="application/opensearchdescription+xml" rel="search"/>
     <%= '<meta name="robots" content="noindex, nofollow">'.html_safe unless Rails.env == 'production' %>
-    <%= raw(render_head_content) %>
-    <link href="http://www.library.nd.edu/css/superfish.css" media="screen,projection" rel="stylesheet" type="text/css" />
+    <%= raw(render_head_content) %> 
+    <%= favicon_link_tag asset_path('favicon.ico') %>
     <%= stylesheet_link_tag 'local', 'template' %>
-    <%= stylesheet_link_tag 'local-print', :media => :print %>
+    <%= stylesheet_link_tag 'local-print', :media => :print %> 
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tags %>
+
   </head>
-  <% if params[:q].to_s.empty? and params[:f].to_s.empty? and params[:id].nil? %>
-    <body onload="$('input#q').focus();" class="<%= render_body_class %>">
-  <% else %>
-    <body class="<%= render_body_class.html_safe %>">
-  <% end %>
-    <%= render :partial=>'shared/environment_notice' %>
+  <body class="<%= render_body_class %>">
     <div id="doc4" class="yui-t2">
       <div id="banner">
         <h3><a href="http://www.library.nd.edu/">Hesburgh Libraries</a></h3>
         <h4><a href="/">Medieval Institute Library</a></h4>
-
         <span class="tell-us" id="tell-us"><a href="http://www.library.nd.edu/feedback.php"><img alt="Tell us what you think" src="http://www.library.nd.edu/css/images/tellus.png" /></a></span>
       </div>
-
       <%= render :partial=>'template/main_menu' %>
+
+      <%= render :partial => 'shared/header_navbar' %>
 
       <div id="crumbs">
         <a href="http://www.library.nd.edu/">Hesburgh Libraries</a> &gt;
@@ -33,31 +41,25 @@
         <a href="/"><%= application_name %></a>
       </div>
 
-      <div id="hd">
-
-        <div class="yui-g">
-          <div class="yui-u first">
-            <h1 class="site_title"><%= link_to styled_application_name, "/" %><%= (params[:controller] == "catalog" and !params[:id]) ? "<span id='results_text'>Search Results</span>".html_safe : "" %></h1>
-          </div>
-          <div class="yui-u user_util_links">
-            <%= render :partial=>'/user_util_links' %>
-          </div>
+      <div id="main-container" class="container">
+            <!-- Top bar -->
+        <div id="search-found" class="row hidden-phone">
+          <%= topbar_items.join('').html_safe %>
         </div>
+            <!-- /Top bar -->
+        <div class="row">
+          <div class="span12">
+            <div id="main-flashes">
+              <%= render :partial=>'/flash_msg' %>
+            </div>
+          </div>    
+        </div>              
+
+        <div class="row">
+          <%= yield %>
+        </div>   
       </div>
-
-      <div id="bd">
-
-        <div id="yui-main">
-          <div class="yui-b">
-            <%= render :partial=>'/flash_msg' %>
-            <%= yield %>
-          </div>
-        </div>
-
-        <div class="yui-b sidebar"><%= sidebar_items.join('').html_safe %></div>
-
-      </div>
-      <%= render :partial=>'template/footer' %>
+      <%= render partial: 'template/footer' %>
     </div>
     <div>
       <script type="text/javascript" src="http://www.library.nd.edu/js/superfish.js"></script>
@@ -66,5 +68,4 @@
       <%= render :partial=>'shared/tracking' %>
     </div>
   </body>
-
 </html>
