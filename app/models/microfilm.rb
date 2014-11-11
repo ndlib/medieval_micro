@@ -20,6 +20,7 @@ class Microfilm < ActiveRecord::Base
   belongs_to :collection
 
   validates_presence_of :shelf_mark, :message => "A microfilm must have a shelf mark."
+  attr_accessible :mss_name, :shelf_mark, :mss_note, :library_id, :location_id, :collection_id, :reel
 
   after_save    :update_solr unless ENV['DO_NOT_INDEX']
   after_destroy :remove_from_solr

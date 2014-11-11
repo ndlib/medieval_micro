@@ -17,6 +17,8 @@ class Location < ActiveRecord::Base
   scope :ordered, :order => 'name ASC'
   scope :attributes_for_select_list, :select => '`name`, `id`'
 
+  attr_accessible :name, :notes
+
   after_save    :update_related_models unless ENV['DO_NOT_INDEX']
   after_destroy :update_related_models
 

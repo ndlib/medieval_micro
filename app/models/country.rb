@@ -23,6 +23,7 @@ class Country < ActiveRecord::Base
   after_destroy :update_related_models
 
   attr_accessor :replacement_country_id
+  attr_accessible :name
 
   def self.create_with_name(name)
     return nil if name.nil?

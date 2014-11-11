@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
   #before_validation :fetch_attributes_from_ldap
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :first_name, :last_name, :administrator, :remember_me, :username
+  attr_accessible :first_name, :last_name, :remember_me, :username
   has_many :default_attribute_values, :dependent => :destroy
   has_many :default_attribute_types,  :through   => :default_attribute_values
   has_and_belongs_to_many :roles, :uniq => true

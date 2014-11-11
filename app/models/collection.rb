@@ -19,6 +19,7 @@ class Collection < ActiveRecord::Base
   }
 
   alias_attribute :collection_name, :name
+  attr_accessible :name, :notes
 
   after_save    :update_related_models unless ENV['DO_NOT_INDEX']
   after_destroy :update_related_models

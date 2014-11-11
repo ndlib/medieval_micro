@@ -17,6 +17,8 @@ class DateRange < ActiveRecord::Base
 
   default_scope order('`date_ranges`.`start_date` ASC')
 
+  attr_accessible :name, :code, :start_date, :end_date
+
   attr_reader :lower_bounds, :upper_bounds
 
   after_initialize :set_bounds

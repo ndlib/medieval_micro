@@ -15,6 +15,7 @@ class City < ActiveRecord::Base
   validates_presence_of :name
 
   default_scope order :name
+  attr_accessible :name, :name_variants, :notes
 
   scope :ordered, :order => 'name ASC'
   scope :attributes_for_select_list, :select => '`name`, `id`'

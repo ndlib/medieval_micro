@@ -18,6 +18,7 @@ class Classification < ActiveRecord::Base
     where("#{quoted_table_name}.`name` LIKE ?", "%#{name.flatten.first}%") unless name.flatten.first.blank?
   }
 
+  attr_accessible :name
   before_save   :replace_with_another_classification_if_provided
   after_save    :update_related_models unless ENV['DO_NOT_INDEX']
   after_destroy :update_related_models
@@ -48,10 +49,10 @@ class Classification < ActiveRecord::Base
       replacement_classification = Classification.find(self.replacement_classification_id.to_i)
       if replacement_classification
         self.facsimiles.each do |facsimile|
-          facsimile.classification_id = replacement_classification.id
+          facsimile.classifications.delete(self)
+          facsimile.classifications << replacement_classification
           facsimile.save
         end
-
         self.destroy
       end
     end

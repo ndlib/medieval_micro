@@ -39,6 +39,11 @@ class Facsimile < ActiveRecord::Base
   has_and_belongs_to_many :libraries,       :uniq => true
   belongs_to :country
 
+  attr_accessible :title, :shelf_mark, :alternate_names, :origin, :dimensions, :century_keywords, :date_description,
+    :author, :content, :hand, :illuminations, :type_of_decoration, :musical_notation, :type_of_musical_notation,
+    :call_number, :commentary_volume, :nature_of_facsimile, :series, :publication_date, :place_of_publication, :publisher,
+    :printer, :notes, :bibliography, :country_id
+
   validates_presence_of :shelf_mark, :message => "A facsimile must have a shelf mark."
 
   after_save    :update_solr unless ENV['DO_NOT_INDEX']

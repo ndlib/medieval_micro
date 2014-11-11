@@ -15,6 +15,8 @@ class Role < ActiveRecord::Base
 
   before_save :update_user_collection
 
+  attr_accessible :name
+
   def self.find_or_create_by_name(name)
     existing_role = self.find_by_name(name)
     existing_role ? existing_role : self.create(:name => name)

@@ -23,6 +23,7 @@ class Language < ActiveRecord::Base
   after_destroy :update_related_models
 
   attr_accessor :replacement_language_id
+  attr_accessible :replacement_language_id, :name
 
   def self.create_with_name(name)
     return nil if name.nil?
@@ -43,7 +44,8 @@ class Language < ActiveRecord::Base
       replacement_language = Language.find(self.replacement_language_id.to_i)
       if replacement_language
         self.facsimiles.each do |facsimile|
-          facsimile.language_id = replacement_language.id
+          facsimile.languages.delete(self)
+          facsimile.languages << replacement_language
           facsimile.save
         end
 

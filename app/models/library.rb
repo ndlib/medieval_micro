@@ -26,6 +26,8 @@ class Library < ActiveRecord::Base
     where("#{quoted_table_name}.`name` LIKE ?", "%#{name.flatten.first}%") unless name.flatten.first.blank?
   }
 
+  attr_accessible :name, :name_variants, :city_id
+
   after_save    :update_related_models unless ENV['DO_NOT_INDEX']
   after_destroy :update_related_models
 
