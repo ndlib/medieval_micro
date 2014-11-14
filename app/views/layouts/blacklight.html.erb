@@ -16,10 +16,10 @@
     <title><%= h(@page_title || application_name) %></title>
     <link href="<%= opensearch_catalog_path(:format => 'xml', :only_path => false) %>" title="<%= application_name%>" type="application/opensearchdescription+xml" rel="search"/>
     <%= '<meta name="robots" content="noindex, nofollow">'.html_safe unless Rails.env == 'production' %>
-    <%= raw(render_head_content) %> 
+    <%= raw(render_head_content) %>
     <%= favicon_link_tag asset_path('favicon.ico') %>
     <%= stylesheet_link_tag 'local', 'template' %>
-    <%= stylesheet_link_tag 'local-print', :media => :print %> 
+    <%= stylesheet_link_tag 'local-print', :media => :print %>
     <%= javascript_include_tag "application" %>
     <%= csrf_meta_tags %>
 
@@ -52,12 +52,12 @@
             <div id="main-flashes">
               <%= render :partial=>'/flash_msg' %>
             </div>
-          </div>    
-        </div>              
+          </div>
+        </div>
 
         <div class="row">
           <%= yield %>
-        </div>   
+        </div>
       </div>
       <%= render partial: 'template/footer' %>
     </div>
