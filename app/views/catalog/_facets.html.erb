@@ -1,0 +1,14 @@
+<% # main container for facets/limits menu -%>
+<% if has_facet_values?  %>
+<div id="facets" class="facets sidenav">
+	
+ 
+  <h4 data-toggle="collapse" data-target=".facets-collapse">
+  	<%= t('blacklight.search.facets.title') %>
+
+  </h4>
+  <div class="facets-collapse">
+  <%= render_facet_partials %>
+</div>
+</div>
+<% end %>

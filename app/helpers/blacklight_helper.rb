@@ -12,4 +12,12 @@ module BlacklightHelper
   def sidebar_items
     @sidebar_items ||= []
   end
+
+  def document_show_link_field document=nil
+    if document.has_key?('format') && document['format'] == 'Microfilm'
+      document['format']
+    else
+      blacklight_config.index.show_link.to_sym
+    end
+  end
 end
