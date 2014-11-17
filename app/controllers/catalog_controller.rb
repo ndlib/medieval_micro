@@ -80,7 +80,7 @@ class CatalogController < ApplicationController
 
     # solr fields to be displayed in the index (search results) view
     #   The ordering of the field names is the order of the display 
-    config.add_index_field 'format', :label => 'Format'
+    #config.add_index_field 'format', :label => 'Format'
     config.add_index_field 'title_display', :label => 'Title:' 
     config.add_index_field 'library_facet', :label => 'Library'
     config.add_index_field 'city_facet', :label => 'City:'

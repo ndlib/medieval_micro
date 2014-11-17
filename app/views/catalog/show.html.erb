@@ -10,7 +10,11 @@
   <div id="doc_<%= @document.id.to_s.parameterize %>">
   
 
-    <h1><%= @document[:format] %></h1>
+    <% if @document[:format] == 'Microfilm' %>
+      <h2><%= @document[:format] %></h2>
+    <% else %>
+      <h2><%= @document[:title_display] %></h2>
+    <% end %>
     <% # bookmark/folder functions -%>
     <% render_document_heading(:h1).html_safe %>
 
