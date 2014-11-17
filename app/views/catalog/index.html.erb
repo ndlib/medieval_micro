@@ -3,6 +3,10 @@
 <% end %>
 
 <div id="content" class="span9">
+  
+  <div id="search" class="search">
+    <%= render_search_bar  %>
+  </div>
 
     <% unless has_search_parameters? %>
 	    <%# if there are no input/search related params, display the "home" partial -%>
