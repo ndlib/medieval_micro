@@ -17,3 +17,12 @@
  *= screen.css
  *= style.css
  */
+
+.item-separator{
+  border-bottom:0px;
+  border-color:grey;
+}
+
+.record_link {
+  float:right;
+}
