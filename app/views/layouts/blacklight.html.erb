@@ -23,9 +23,9 @@
       <%= hesburgh_stylesheet_link_tag :main, "ie.css", :media => "all" %>
     <![endif]-->
     <%= stylesheet_link_tag "application", :media => "all" %>
-    <%= hesburgh_javascript_include_tag :main, "index.js" %>
+    <% #= hesburgh_javascript_include_tag :main, "index.js" %>
     <% if branch_site? %>
-      <%= hesburgh_javascript_include_tag active_branch_code, "index.js" %>
+      <% #= hesburgh_javascript_include_tag active_branch_code, "index.js" %>
     <% end %>
     <%= javascript_include_tag "application" %>
     <%= csrf_meta_tags %>
