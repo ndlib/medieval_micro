@@ -37,6 +37,14 @@ namespace :deploy do
     end
   end
 
+  task :precompile_assets do
+    on roles(:app) do
+      within release_path do
+        execute "export PATH=/opt/ruby/current/bin:$PATH && cd #{release_path} && bundle exec rake RAILS_ENV=#{fetch(:rails_env)} assets:precompile"
+      end
+    end
+  end
+
   task :debug do
     on roles(:app) do
       execute "export PATH=/opt/ruby/current/bin:$PATH && which bundle && bundle --version"
