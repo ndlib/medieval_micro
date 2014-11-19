@@ -63,3 +63,11 @@ production:
   <<: *rails_user
   database: microfilms_prod
   host:     dbprod.library.nd.edu
+
+
+staging:
+  <<: *mysql_settings
+  <<: *mysql_connection
+  database: microfilms
+  username: root
+  password: l1bD8abas3
