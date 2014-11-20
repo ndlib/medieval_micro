@@ -78,8 +78,8 @@ MedievalMicro::Application.configure do
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
   config.assets.debug = false
-  config.assets.precompile += ['print.css']
+  config.assets.precompile += ['print.css', 'screen.css', 'style.css', 'formtastic.css', 'formtastic_changes.css', 'jquery-ui.css']
 
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
-  config.application_root_url = "http://medievalstaging-vm.library.nd.edu"
+  config.application_root_url = "medievalstaging-vm.library.nd.edu"
 end
