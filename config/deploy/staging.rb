@@ -11,6 +11,8 @@
 # server list. The second argument is a, or duck-types, Hash and is
 # used to set extended properties on the server.
 
+SSHKit.config.command_map[:bundle] = '/opt/ruby/current/bin/bundle'
+SSHKit.config.command_map[:rake] = "#{fetch(:bundle)} exec rake"
 set :branch,    'rails-4' #fetch(:tag, 'rails-4'))
 set :rails_env, 'staging'
 set :deploy_to, '/home/app/medieval_micro'

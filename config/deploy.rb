@@ -1,6 +1,8 @@
 # config valid only for Capistrano 3.1
 lock '3.2.1'
-
+set :default_environment, {
+  'PATH' => "/opt/ruby/current/bin:$PATH"
+}
 set :bundle_roles, [:app, :work]
 set :bundle_flags, "--deployment --path=vendor/bundle"
 set :bundle_cmd, "/opt/ruby/current/bin/bundle"
@@ -40,7 +42,7 @@ namespace :deploy do
   task :precompile_assets do
     on roles(:app) do
       within release_path do
-        execute "export PATH=/opt/ruby/current/bin:$PATH && cd #{release_path} && bundle exec rake RAILS_ENV=#{fetch(:rails_env)} assets:precompile"
+        execute "export PATH=/opt/ruby/current/bin:$PATH && cd #{release_path} && /opt/ruby/current/bin/bundle exec rake RAILS_ENV=#{fetch(:rails_env)} assets:precompile"
       end
     end
   end
@@ -51,5 +53,15 @@ namespace :deploy do
     end
   end
 
+  namespace :assets do
+    task :precompile do
+      on roles(:app) do
+        within release_path do
+          with rails_env: fetch(:rails_env) do
+            execute "export PATH=/opt/ruby/current/bin:$PATH && cd #{release_path} && /opt/ruby/current/bin/bundle exec rake RAILS_ENV=#{fetch(:rails_env)} assets:precompile"
+          end
+        end
+      end
+    end
+  end
 end
-
