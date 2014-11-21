@@ -5,6 +5,8 @@ class CatalogController < ApplicationController
 
   include Blacklight::Catalog
 
+  before_filter :add_medieval_library
+
   configure_blacklight do |config|
     ## Default parameters to send to solr for all search-like requests. See also SolrHelper#solr_search_params
     config.default_solr_params = { 
@@ -206,6 +208,9 @@ class CatalogController < ApplicationController
     config.spell_max = 5
   end
 
+  def add_medieval_library
+    params[:active_branch_code] = 'medieval_library'
+  end
 
 
 end 
