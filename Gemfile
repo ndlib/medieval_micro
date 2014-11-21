@@ -19,6 +19,7 @@ gem 'fastercsv'
 gem 'net-ldap', '~> 0.1.1', :require => 'net/ldap'
 gem 'protected_attributes'
 gem 'formtastic', '3.0'
+gem 'rb-readline'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer',  platforms: :ruby
 
