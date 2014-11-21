@@ -54,19 +54,17 @@ class CatalogController < ApplicationController
     # :show may be set to false if you don't want the facet to be drawn in the 
     # facet bar
     config.add_facet_field 'format', :label => 'Format'
-    config.add_facet_field 'language_facet', :label => 'Language', :limit => true 
-    config.add_facet_field 'library_facet', :label => 'Library', :limit => true
-    config.add_facet_field 'city_facet', :label => 'City', :limit => true
-    config.add_facet_field 'country_of_origin_facet', :label => 'Country of Origin', :limit => true
-    config.add_facet_field 'collection_facet', :label => 'Collection', :limit => true
-    config.add_facet_field 'date_range_facet', :label => 'Date Range', :limit => true
-    config.add_facet_field 'illuminations_facet', :label => 'Illuminations', :limit => true
-    config.add_facet_field 'musical_notation_facet', :label => 'Musical Notation', :limit => true
-    config.add_facet_field 'commentary_volume_facet', :label => 'Commentary Volume', :limit => true
-    config.add_facet_field 'classification_facet', :label => 'Type of Text', :limit => true
+    config.add_facet_field 'language_facet', :label => 'Language', :limit => 10
+    config.add_facet_field 'library_facet', :label => 'Library', :limit => 10
+    config.add_facet_field 'city_facet', :label => 'City', :limit => 10
+    config.add_facet_field 'country_of_origin_facet', :label => 'Country of Origin', :limit => 10
+    config.add_facet_field 'collection_facet', :label => 'Collection', :limit => 10
+    config.add_facet_field 'date_range_facet', :label => 'Date Range', :limit => 10
+    config.add_facet_field 'illuminations_facet', :label => 'Illuminations', :limit => 10
+    config.add_facet_field 'musical_notation_facet', :label => 'Musical Notation', :limit => 10
+    config.add_facet_field 'commentary_volume_facet', :label => 'Commentary Volume', :limit => 10
+    config.add_facet_field 'classification_facet', :label => 'Type of Text', :limit => 10
 
-
-    config.add_facet_field 'example_pivot_field', :label => 'Pivot Field', :pivot => ['format', 'language_facet']
 
     config.add_facet_field 'example_query_facet_field', :label => 'Publish Date', :query => {
        :years_5 => { :label => 'within 5 Years', :fq => "pub_date:[#{Time.now.year - 5 } TO *]" },
