@@ -3,7 +3,7 @@
     <%= form.inputs :title => 'Origional Work' do %>
       <%= form.input :title %>
       <%= form.input :alternate_names %>
-      <%= form.input :libraries, :label_method => :name_with_city, :hint => "You can create a #{link_to 'new library', new_admin_library_path} if you don't see the one you're interested in.".html_safe, :input_html => { :class => 'multiselect' } %>
+      <%= form.input :libraries, :member_label => :name_with_city, :hint => "You can create a #{link_to 'new library', new_admin_library_path} if you don't see the one you're interested in.".html_safe, :input_html => { :class => 'multiselect' } %>
       <%= form.input :shelf_mark %>
       <%= form.input :origin %>
       <%= form.input :country, :label => "Country of Origin", :hint => "You can create a #{link_to 'new country of origin', new_admin_country_path} if you don't see the one you're interested in.".html_safe %>

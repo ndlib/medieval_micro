@@ -7,9 +7,9 @@
   <%= semantic_form_for [:admin, @microfilm] do |form| %>
     <%= form.inputs do %>
       <% if @microfilm.new_record? %>
-        <%= form.input :library_id, :as => :select, :collection => Library.ordered, :label_method => :name_with_city, :selected => current_user.default_attribute_for(:library_id).to_i  %>
+        <%= form.input :library_id, :as => :select, :collection => Library.ordered, :member_label => :name_with_city, :selected => current_user.default_attribute_for(:library_id).to_i  %>
       <% else %>
-        <%= form.input :library_id, :as => :select, :collection => Library.ordered, :label_method => :name_with_city %>
+        <%= form.input :library_id, :as => :select, :collection => Library.ordered, :member_label => :name_with_city %>
       <% end %>
       <%= form.input :shelf_mark %>
       <%= form.input :mss_name %>
