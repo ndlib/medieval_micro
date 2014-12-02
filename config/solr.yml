@@ -4,3 +4,5 @@ test: &test
   url: <%= ENV['SOLR_URL'] || "http://127.0.0.1:8983/solr" %>
 staging:
   url: "http://localhost:8080/solr/medieval_micro"
+pre_production:
+  url: http://solr41pprd.library.nd.edu:8080/solr/medieval_micro/
