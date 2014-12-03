@@ -7,10 +7,22 @@ class CatalogController < ApplicationController
 
   before_filter :add_medieval_library
 
+  def solr_search_params(*args)
+    super(init_params)
+  end
+
+  def init_params
+    if params.has_key?(:qt)
+      {}
+    else
+      {qt: nil}
+    end
+  end
   configure_blacklight do |config|
     ## Default parameters to send to solr for all search-like requests. See also SolrHelper#solr_search_params
     config.default_solr_params = { 
       :qt => 'search',
+      :qf => ['title_display', 'library_facet'] ,
       :rows => 10 
     }
 

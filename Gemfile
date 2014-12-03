@@ -52,6 +52,7 @@ gem 'hesburgh_assets', :git => 'git@git.library.nd.edu:assets'
 gem "unicode", platforms: [:mri_18, :mri_19]
 gem "bootstrap-sass"
 group :development, :test do
+  gem 'better_errors'
   gem 'rspec-rails', '~> 3.0.0'
   gem 'database_cleaner', '< 1.1.0'
 end
