@@ -623,6 +623,7 @@
    <!-- Copy Fields -->
         
    <!-- unstemmed fields -->
+  <copyField source="*_s" dest="*_t"/>
    <copyField source="title_t" dest="title_unstem_search"/>
    <copyField source="subtitle_t" dest="subtitle_unstem_search"/>
    <copyField source="title_addl_t" dest="title_addl_unstem_search"/>

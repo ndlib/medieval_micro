@@ -7,11 +7,31 @@ class CatalogController < ApplicationController
 
   before_filter :add_medieval_library
 
+  def solr_search_params(*args)
+    begin
+      super.merge(init_params)
+    rescue
+      super(init_params)
+    end
+  end
+
+  def init_params
+    if !params.has_key?(:qt)
+      params.merge({qt: nil})
+    end
+    params
+  end
+
   configure_blacklight do |config|
     ## Default parameters to send to solr for all search-like requests. See also SolrHelper#solr_search_params
     config.default_solr_params = { 
       :qt => 'search',
-      :qf => ['title_display', 'library_facet'] ,
+      :qf => ['title_t', 'library_facet', 'language_facet' 'city_facet', 'alternate_title_t', 'shelf_mark_t',
+             'origin_t', 'country_of_origin_facet', 'century_keywords_t', 'date_description_t', 'date_range_facet',
+             'author_t', 'content_t', 'illuminations_facet', 'nature_of_facsimile_t', 'classification_facet',
+             'bibliography_t', 'notes_t', 'publisher_t', 'place_of_publication_t', 'commentary_volume_facet',
+             'call_number_t', 'type_of_muiscal_notation_t', 'musical_notation_facet', 'type_of_decoration_t'
+              ] ,
       :rows => 10 
     }
 
@@ -27,12 +47,12 @@ class CatalogController < ApplicationController
     #}
 
     # solr field configuration for search results/index views
-    config.index.show_link = 'title_display'
+    config.index.show_link = 'title_s'
     config.index.record_display_type = 'format'
 
     # solr field configuration for document/show views
-    config.show.html_title = 'title_display'
-    config.show.heading = 'title_display'
+    config.show.html_title = 'title_s'
+    config.show.heading = 'title_s'
     config.show.display_type = 'format'
 
     # solr fields that will be treated as facets by the blacklight application
@@ -42,7 +62,7 @@ class CatalogController < ApplicationController
     # * If left unset, then all facet values returned by solr will be displayed.
     # * If set to an integer, then "f.somefield.facet.limit" will be added to
     # solr request, with actual solr request being +1 your configured limit --
-    # you configure the number of items you actually want _displayed_ in a page.    
+    # you configure the number of items you actually want _ted_ in a page.    
     # * If set to 'true', then no additional parameters will be sent to solr,
     # but any 'sniffed' request limit parameters will be used for paging, with
     # paging at requested limit -1. Can sniff from facet.limit or 
@@ -82,56 +102,56 @@ class CatalogController < ApplicationController
     # solr fields to be displayed in the index (search results) view
     #   The ordering of the field names is the order of the display 
     #config.add_index_field 'format', :label => 'Format'
-    config.add_index_field 'title_display', :label => 'Title:' 
+    config.add_index_field 'title_s', :label => 'Title:' 
     config.add_index_field 'library_facet', :label => 'Library'
     config.add_index_field 'city_facet', :label => 'City:'
-    config.add_index_field 'shelf_mark_display', :label => 'Shelf Mark:'
-    config.add_index_field 'mss_name_display', :label => 'Mss Name:'
-    config.add_index_field 'mss_note_display', :label => 'Mss Note:'
+    config.add_index_field 'shelf_mark_s', :label => 'Shelf Mark:'
+    config.add_index_field 'mss_name_s', :label => 'Mss Name:'
+    config.add_index_field 'mss_note_s', :label => 'Mss Note:'
     config.add_index_field 'collection_facet', :label => 'Collection:'
-    config.add_index_field 'reel_display', :label => 'Reel:'
-    config.add_index_field 'hesburgh_location_display', :label => 'Hesburgh Location:'
-    config.add_index_field 'alternate_names_display', :label => 'Alternate Names:'
+    config.add_index_field 'reel_s', :label => 'Reel:'
+    config.add_index_field 'hesburgh_location_s', :label => 'Hesburgh Location:'
+    config.add_index_field 'alternate_names_s', :label => 'Alternate Names:'
     config.add_index_field 'language_facet', :label => 'Language:'
     config.add_index_field 'illuminations_facet', :label => 'Illuminations:'
     config.add_index_field 'musical_notation_facet', :label => 'Musical Notation:'
-    config.add_index_field 'call_number_display', :label => 'Call Number:'
+    config.add_index_field 'call_number_s', :label => 'Call Number:'
     config.add_index_field 'commentary_volume_facet', :label => 'Commentary Volume:'
 
     # solr fields to be displayed in the show (single result) view
     #   The ordering of the field names is the order of the display 
-    #config.add_show_field 'title_display', :label => 'Title:' 
+    config.add_show_field 'title_s', :label => 'Title:' 
     config.add_show_field 'library_facet', :label => 'Library:'
     config.add_show_field 'language_facet', :label => 'Language:'
     config.add_show_field 'city_facet', :label => 'City:'
-    config.add_show_field 'shelf_mark_display', :label => 'Shelf Mark:'
-    config.add_show_field 'mss_name_display', :label => 'Mss Name:'
-    config.add_show_field 'mss_note_display', :label => 'Mss Note:'
+    config.add_show_field 'shelf_mark_s', :label => 'Shelf Mark:'
+    config.add_show_field 'mss_name_s', :label => 'Mss Name:'
+    config.add_show_field 'mss_note_s', :label => 'Mss Note:'
     config.add_show_field 'collection_facet', :label => 'Collection:'
-    config.add_show_field 'reel_display', :label => 'Reel:'
-    config.add_show_field 'hesburgh_location_display', :label => 'Hesburgh Location:'
-    config.add_show_field 'alternate_names_display', :label => 'Alternate Names:'
-    config.add_show_field 'origin_display', :label => 'Origin:'
+    config.add_show_field 'reel_s', :label => 'Reel:'
+    config.add_show_field 'hesburgh_location_s', :label => 'Hesburgh Location:'
+    config.add_show_field 'alternate_names_s', :label => 'Alternate Names:'
+    config.add_show_field 'origin_s', :label => 'Origin:'
     config.add_show_field 'country_of_origin_facet', :label => 'Country of Origin:'
-    config.add_show_field 'dimensions_display', :label => 'Dimensions:'
-    config.add_show_field 'date_description_display', :label => 'Date Description:'
-    config.add_show_field 'author_display', :label => 'Author:'
-    config.add_show_field 'content_display', :label => 'Content:'
-    config.add_show_field 'hand_display', :label => 'Hand:'
+    config.add_show_field 'dimensions_s', :label => 'Dimensions:'
+    config.add_show_field 'date_description_s', :label => 'Date Description:'
+    config.add_show_field 'author_s', :label => 'Author:'
+    config.add_show_field 'content_s', :label => 'Content:'
+    config.add_show_field 'hand_s', :label => 'Hand:'
     config.add_show_field 'illuminations_facet', :label => 'Illuminations:'
-    config.add_show_field 'type_of_decoration_display', :label => 'Type of Decoration:'
+    config.add_show_field 'type_of_decoration_s', :label => 'Type of Decoration:'
     config.add_show_field 'musical_notation_facet', :label => 'Musical Notation:'
-    config.add_show_field 'type_of_muiscal_notation_display', :label => 'Type of Musical Notation:'
-    config.add_show_field 'call_number_display', :label => 'Call Number:'
+    config.add_show_field 'type_of_muiscal_notation_s', :label => 'Type of Musical Notation:'
+    config.add_show_field 'call_number_s', :label => 'Call Number:'
     config.add_show_field 'commentary_volume_facet', :label => 'Commentary Volume:'
-    config.add_show_field 'nature_of_facsimile_display', :label => 'Nature of Facsimile:'
-    config.add_show_field 'series_display', :label => 'Series:'
-    config.add_show_field 'publication_date_display', :label => 'Publication Date:'
-    config.add_show_field 'place_of_publication_display', :label => 'Place of Publication:'
-    config.add_show_field 'publisher_display', :label => 'Publisher:'
-    config.add_show_field 'printer_display', :label => 'Printer:'
-    config.add_show_field 'notes_display', :label => 'Notes:'
-    config.add_show_field 'bibliography_display', :label => 'Bibliography:'
+    config.add_show_field 'nature_of_facsimile_s', :label => 'Nature of Facsimile:'
+    config.add_show_field 'series_s', :label => 'Series:'
+    config.add_show_field 'publication_date_s', :label => 'Publication Date:'
+    config.add_show_field 'place_of_publication_s', :label => 'Place of Publication:'
+    config.add_show_field 'publisher_s', :label => 'Publisher:'
+    config.add_show_field 'printer_s', :label => 'Printer:'
+    config.add_show_field 'notes_s', :label => 'Notes:'
+    config.add_show_field 'bibliography_s', :label => 'Bibliography:'
     config.add_show_field 'classification_facet', :label => 'Type of Text:'
 
     # "fielded" search configuration. Used by pulldown among other places.

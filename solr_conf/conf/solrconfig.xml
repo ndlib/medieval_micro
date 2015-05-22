@@ -110,41 +110,41 @@
           isbn_t
           text
           format
-          title_display
-          alternate_names_display
+          title_s
+          alternate_names_s
           library_facet
           city_facet
-          shelf_mark_display
-          mss_name_display
-          mss_note_display
+          shelf_mark_s
+          mss_name_s
+          mss_note_s
           collection_facet
-          reel_display
-          hesburgh_location_display
-          alternate_names_display
-          origin_display
-          dimensions_display
-          century_keywords_display
-          date_description_display
+          reel_s
+          hesburgh_location_s
+          alternate_names_s
+          origin_s
+          dimensions_s
+          century_keywords_s
+          date_description_s
           date_range_facet
           language_facet
           classification_facet
-          author_display
-          content_display
-          hand_display
+          author_s
+          content_s
+          hand_s
           illuminations_facet
-          type_of_decoration_display
+          type_of_decoration_s
           musical_notation_facet
-          type_of_musical_notation_display
-          call_number_display
+          type_of_musical_notation_s
+          call_number_s
           commentary_volume_facet
-          nature_of_facsimile_display
-          series_display
-          publication_date_display
-          place_of_publication_display
-          publisher_display
-          printer_display
-          notes_display
-          bibliography_display
+          nature_of_facsimile_s
+          series_s
+          publication_date_s
+          place_of_publication_s
+          publisher_s
+          printer_s
+          notes_s
+          bibliography_s
        </str>
        <str name="pf">
           title_unstem_search^1000000
@@ -169,41 +169,41 @@
           title_series_t^100
           text^10
           format
-          title_display
-          alternate_names_display
+          title_s
+          alternate_names_s
           library_facet
           city_facet
-          shelf_mark_display
-          mss_name_display
-          mss_note_display
+          shelf_mark_s
+          mss_name_s
+          mss_note_s
           collection_facet
-          reel_display
-          hesburgh_location_display
-          alternate_names_display
-          origin_display
-          dimensions_display
-          century_keywords_display
-          date_description_display
+          reel_s
+          hesburgh_location_s
+          alternate_names_s
+          origin_s
+          dimensions_s
+          century_keywords_s
+          date_description_s
           date_range_facet
           language_facet
           classification_facet
-          author_display
-          content_display
-          hand_display
+          author_s
+          content_s
+          hand_s
           illuminations_facet
-          type_of_decoration_display
+          type_of_decoration_s
           musical_notation_facet
-          type_of_musical_notation_display
-          call_number_display
+          type_of_musical_notation_s
+          call_number_s
           commentary_volume_facet
-          nature_of_facsimile_display
-          series_display
-          publication_date_display
-          place_of_publication_display
-          publisher_display
-          printer_display
-          notes_display
-          bibliography_display
+          nature_of_facsimile_s
+          series_s
+          publication_date_s
+          place_of_publication_s
+          publisher_s
+          printer_s
+          notes_s
+          bibliography_s
        </str>
        <str name="author_qf">
          author_unstem_search^200
@@ -261,63 +261,63 @@
        <int name="ps">3</int>
        <float name="tie">0.01</float>
 
-       <!-- NOT using marc_display because it is large and will slow things down for search results -->
+       <!-- NOT using marc_s because it is large and will slow things down for search results -->
        <str name="fl">
           id, 
           score,
-          author_display,
-          author_vern_display, 
+          author_s,
+          author_vern_s, 
           format, 
           isbn_t, 
           language_facet,
           classification_facet,
-          lc_callnum_display,
-          material_type_display, 
-          published_display,
-          published_vern_display,
+          lc_callnum_s,
+          material_type_s, 
+          published_s,
+          published_vern_s,
           pub_date,
-          title_display,
-          title_vern_display,
+          title_s,
+          title_vern_s,
           subject_topic_facet,
           subject_geo_facet,
           subject_era_facet,
-          subtitle_display,
-          subtitle_vern_display,
-          url_fulltext_display,
-          url_suppl_display,
+          subtitle_s,
+          subtitle_vern_s,
+          url_fulltext_s,
+          url_suppl_s,
           library_facet,
           city_facet,
-          shelf_mark_display,
-          mss_name_display,
-          mss_note_display,
+          shelf_mark_s,
+          mss_name_s,
+          mss_note_s,
           collection_facet,
-          reel_display,
-          hesburgh_location_display,
-          alternate_names_display,
-          origin_display,
-          dimensions_display,
-          century_keywords_display,
-          date_description_display,
+          reel_s,
+          hesburgh_location_s,
+          alternate_names_s,
+          origin_s,
+          dimensions_s,
+          century_keywords_s,
+          date_description_s,
           date_range_facet,
           language_facet,
           classification_facet,
-          author_display,
-          content_display,
-          hand_display,
+          author_s,
+          content_s,
+          hand_s,
           illuminations_facet,
-          type_of_decoration_display,
+          type_of_decoration_s,
           musical_notation_facet,
-          type_of_musical_notation_display,
-          call_number_display,
+          type_of_musical_notation_s,
+          call_number_s,
           commentary_volume_facet,
-          nature_of_facsimile_display,
-          series_display,
-          publication_date_display,
-          place_of_publication_display,
-          publisher_display,
-          printer_display,
-          notes_display,
-          bibliography_display
+          nature_of_facsimile_s,
+          series_s,
+          publication_date_s,
+          place_of_publication_s,
+          publisher_s,
+          printer_s,
+          notes_s,
+          bibliography_s
        </str>
 
        <str name="facet">true</str>
@@ -490,30 +490,30 @@
       <str name="qf_keyword">text</str>
       <str name="pf_keyword">text^10</str>
       
-      <!-- NOT using marc_display because it is large and will slow things down for search results -->
+      <!-- NOT using marc_s because it is large and will slow things down for search results -->
       <str name="fl">
         id, 
         score,
-        author_display,
-        author_vern_display, 
+        author_s,
+        author_vern_s, 
         format, 
         isbn_t, 
         language_facet, 
         classification_facet,
-        lc_callnum_display,
-        material_type_display, 
-        published_display,
-        published_vern_display,
+        lc_callnum_s,
+        material_type_s, 
+        published_s,
+        published_vern_s,
         pub_date,
-        title_display,
-        title_vern_display,
+        title_s,
+        title_vern_s,
         subject_topic_facet,
         subject_geo_facet,
         subject_era_facet,
-        subtitle_display,
-        subtitle_vern_display,
-        url_fulltext_display,
-        url_suppl_display,
+        subtitle_s,
+        subtitle_vern_s,
+        url_fulltext_s,
+        url_suppl_s,
       </str>
       
       <str name="facet">true</str>

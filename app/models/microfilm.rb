@@ -51,17 +51,17 @@ class Microfilm < ActiveRecord::Base
 
   def as_solr
     {
-      :id                        => solr_id,
-      :title_display             => solr_id,
-      :format                    => self.class.name,
-      :library_facet             => library_name,
-      :city_facet                => library_city_name,
-      :shelf_mark_display        => shelf_mark,
-      :mss_name_display          => mss_name,
-      :mss_note_display          => mss_note,
-      :collection_facet          => collection_name,
-      :reel_display              => reel,
-      :hesburgh_location_display => location_name
+      :id                  => solr_id,
+      :title_s             => solr_id,
+      :format              => self.class.name,
+      :library_facet       => library_name,
+      :city_facet          => library_city_name,
+      :shelf_mark_s        => shelf_mark,
+      :mss_name_s          => mss_name,
+      :mss_note_s          => mss_note,
+      :collection_facet    => collection_name,
+      :reel_s              => reel,
+      :hesburgh_location_s => location_name
     }.reject{|key, value| value.blank?}
   end
 
