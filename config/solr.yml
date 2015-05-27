@@ -5,6 +5,7 @@ test: &test
 staging:
   url: 'http://localhost:8080/solr/medieval_micro'
 pre_production:
-  url: http://solr41pprd.library.nd.edu:8080/solr/medieval_micro/
+  #url: http://solr41pprd.library.nd.edu:8080/solr/medieval_micro/
+  url: 'http://localhost:8080/solr/medieval_micro'
 production:
   url: 'http://localhost:8080/solr/medieval_micro'
