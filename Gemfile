@@ -15,15 +15,14 @@ gem 'rails', '4.0.11'
 gem 'rb-readline'
 gem 'unicode', platforms: [:mri_18, :mri_19]
 
-group :assets do
-  gem 'bootstrap-sass'
-  gem 'coffee-rails', '~> 4.0.0'
-  gem 'hesburgh_assets', git: 'git@git.library.nd.edu:assets'
-  gem 'jquery-rails'
-  gem 'sass-rails', '~> 4.0.3'
-  gem 'turbolinks'
-  gem 'uglifier', '>= 1.3.0'
-end
+# Assets
+gem 'bootstrap-sass'
+gem 'coffee-rails', '~> 4.0.0'
+gem 'hesburgh_assets', git: 'git@git.library.nd.edu:assets'
+gem 'jquery-rails'
+gem 'sass-rails', '~> 4.0.3'
+gem 'turbolinks'
+gem 'uglifier', '>= 1.3.0'
 
 group :development do
   gem 'better_errors'
