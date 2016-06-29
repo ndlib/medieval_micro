@@ -26,12 +26,32 @@ class CatalogController < ApplicationController
     ## Default parameters to send to solr for all search-like requests. See also SolrHelper#solr_search_params
     config.default_solr_params = { 
       :qt => 'search',
-      :qf => ['title_t', 'library_facet', 'language_facet' 'city_facet', 'alternate_title_t', 'shelf_mark_t',
-             'origin_t', 'country_of_origin_facet', 'century_keywords_t', 'date_description_t', 'date_range_facet',
-             'author_t', 'content_t', 'illuminations_facet', 'nature_of_facsimile_t', 'classification_facet',
-             'bibliography_t', 'notes_t', 'publisher_t', 'place_of_publication_t', 'commentary_volume_facet',
-             'call_number_t', 'type_of_muiscal_notation_t', 'musical_notation_facet', 'type_of_decoration_t'
-              ] ,
+      :qf => [
+        'title_t',
+        'library_facet',
+        'language_facet' 'city_facet',
+        'alternate_title_t',
+        'shelf_mark_t',
+        'origin_t',
+        'country_of_origin_facet',
+        'century_keywords_t',
+        'date_description_t',
+        'date_range_facet',
+        'author_t',
+        'content_t',
+        'illuminations_facet',
+        'nature_of_facsimile_t',
+        'classification_facet',
+        'bibliography_t',
+        'notes_t',
+        'publisher_t',
+        'place_of_publication_t',
+        'commentary_volume_facet',
+        'call_number_t',
+        'type_of_muiscal_notation_t',
+        'musical_notation_facet',
+        'type_of_decoration_t'
+      ],
       :rows => 10 
     }
 
