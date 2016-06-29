@@ -25,10 +25,14 @@ group :assets do
   gem 'uglifier', '>= 1.3.0'
 end
 
-group :development, :test do
+group :development do
   gem 'better_errors'
-  gem 'database_cleaner', '< 1.1.0'
+  gem 'binding_of_caller'
   gem 'jettywrapper'
+end
+
+group :development, :test do
+  gem 'database_cleaner', '< 1.1.0'
   gem 'rspec-rails', '~> 3.0.0'
 end
 
