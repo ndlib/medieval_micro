@@ -4,3 +4,6 @@
 require File.expand_path('../config/application', __FILE__)
 
 MedievalMicro::Application.load_tasks
+
+# Jettywrapper configuration
+Jettywrapper.url='https://github.com/projectblacklight/blacklight-jetty/archive/v4.0.0.zip'

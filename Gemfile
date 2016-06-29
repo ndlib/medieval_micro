@@ -28,6 +28,7 @@ end
 group :development, :test do
   gem 'better_errors'
   gem 'database_cleaner', '< 1.1.0'
+  gem 'jettywrapper'
   gem 'rspec-rails', '~> 3.0.0'
 end
 
