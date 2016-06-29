@@ -11,7 +11,7 @@ namespace :jetty do
     if Dir.exist?(target_path)
       if Dir.exist?(config_path)
         logger.info 'Removing packaged config files in jetty'
-        FileUtils.rmdir(target_path)
+        FileUtils.rm_rf(target_path)
         logger.info 'Installing local config file'
         FileUtils.cp_r(config_path, target_path)
         logger.info 'SUCCESS! Local Solr config files installed'
