@@ -1,8 +1,31 @@
 # Medieval Microfilms and Facsimiles Database
+This application serves as a supplementary finding aid for microfilms and facsimiles in the Medieval Institute collection.
 
-NOTE: Jetty isn't included by default and there are no rake tasks to do it.
-The last version it has been tested on is Solr v4.0.0.
+Production URL: https://medieval-microfilms-and-facsimiles.library.nd.edu/
 
-There is a tagged blacklight jetty release with Solr v4.0.0:
+Product Owner: Julia Schneider (jschneid)
 
-    https://github.com/projectblacklight/blacklight-jetty/archive/v4.0.0.zip
+## Setting up your development environment
+
+Install ruby & project dependencies:
+```
+rbenv install `cat .ruby-version`
+gem install bundler
+bundle
+```
+
+Create the database and load data from production:
+```
+mysql.server start
+bundle exec rake db:create db:migrate db:sync[production]
+```
+
+Set up Solr:
+```
+bundle exec rake jetty:clean jetty:configure
+```
+
+Populate the Solr index with data from the database:
+```
+bundle exec rake solr:index:all
+```
