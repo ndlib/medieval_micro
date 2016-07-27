@@ -27,20 +27,28 @@ class CatalogController < ApplicationController
     config.default_solr_params = {
       :qt => 'search',
       :qf => [
-        'format',                     # Shared fields
+        'format_t',                   # Shared fields
         'title_t',
+        'library_t',
+        'city_t',
         'shelf_mark_t',
         'alternate_names_t',          # Facsimile specific fields
         'origin_t',
+        'country_of_origin_t',
         'dimensions_t',
         'century_keywords_t',
         'date_description_t',
+        'date_range_t',
+        'language_t',
         'author_t',
         'content_t',
         'hand_t',
+        'illuminations_t',
         'type_of_decoration_t',
+        'musical_notation_t',
         'type_of_musical_notation_t',
         'call_number_t',
+        'commentary_volume_t',
         'nature_of_facsimile_t',
         'series_t',
         'publication_date_t',
@@ -49,10 +57,12 @@ class CatalogController < ApplicationController
         'printer_t',
         'notes_t',
         'bibliography_t',
+        'classification_t',
         'mss_name_t',                 # Microfilm specific fields
         'mss_note_t',
+        'collection_t',
         'reel_t',
-        'hesburgh_location_t',
+        'hesburgh_location_t'
       ],
       :rows => 10 
     }
