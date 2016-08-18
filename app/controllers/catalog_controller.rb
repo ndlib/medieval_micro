@@ -62,7 +62,8 @@ class CatalogController < ApplicationController
         'mss_note_t',
         'collection_t',
         'reel_t',
-        'hesburgh_location_t'
+        'hesburgh_location_t',
+        'text'                        # Blunt searching
       ],
       :rows => 10 
     }
