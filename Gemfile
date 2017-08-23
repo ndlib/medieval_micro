@@ -18,7 +18,7 @@ gem 'unicode', platforms: [:mri_18, :mri_19]
 # Assets
 gem 'bootstrap-sass'
 gem 'coffee-rails', '~> 4.0.0'
-gem 'hesburgh_assets', git: 'git@git.library.nd.edu:assets'
+gem 'hesburgh_assets', git: 'git@git.library.nd.edu:assets', branch: 'assets-work-around-post-renovation'
 gem 'jquery-rails'
 gem 'sass-rails', '~> 4.0.3'
 gem 'turbolinks'

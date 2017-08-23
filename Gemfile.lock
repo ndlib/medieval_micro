@@ -9,9 +9,10 @@ GIT
 
 GIT
   remote: git@git.library.nd.edu:assets
-  revision: b0236aa515dc089fe4796fe14fc59cd6eaa2bd43
+  revision: 8936c7542c01bd93a1c1adbcbc76c40b96bd1884
+  branch: assets-work-around-post-renovation
   specs:
-    hesburgh_assets (0.0.1)
+    hesburgh_assets (0.0.2)
       coffee-rails (>= 3.2.1)
       jquery-rails (>= 2.1.4)
       rails (>= 3.2.13)
@@ -97,6 +98,7 @@ GEM
       execjs
     coffee-script-source (1.8.0)
     columnize (0.3.6)
+    commonjs (0.2.7)
     database_cleaner (1.0.1)
     debug_inspector (0.0.2)
     debugger-linecache (1.2.0)
@@ -131,6 +133,13 @@ GEM
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
     json (1.8.1)
+    less (2.6.0)
+      commonjs (~> 0.2.7)
+    less-rails (2.8.0)
+      actionpack (>= 4.0)
+      less (~> 2.6.0)
+      sprockets (> 2, < 4)
+      tilt
     logger (1.2.8)
     mail (2.6.3)
       mime-types (>= 1.16, < 3)
@@ -220,10 +229,10 @@ GEM
     tilt (1.4.1)
     turbolinks (2.5.1)
       coffee-rails
-    twitter-bootstrap-rails (2.2.8)
+    twitter-bootstrap-rails (3.2.2)
       actionpack (>= 3.1)
-      execjs
-      rails (>= 3.1)
+      execjs (>= 2.2.2, >= 2.2)
+      less-rails (>= 2.5.0)
       railties (>= 3.1)
     tzinfo (0.3.42)
     uglifier (2.5.3)
@@ -273,4 +282,4 @@ DEPENDENCIES
   unicode
 
 BUNDLED WITH
-   1.12.5
+   1.14.6
