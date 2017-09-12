@@ -20,10 +20,9 @@ gem 'rake', '11.2.2'
 # Assets
 gem 'bootstrap-sass'
 gem 'coffee-rails', '~> 4.0.0'
-gem 'hesburgh_assets', git: 'git@git.library.nd.edu:assets', branch: 'assets-work-around-post-renovation'
+gem 'hesburgh_assets', git: 'git@git.library.nd.edu:assets'
 gem 'jquery-rails'
 gem 'sass-rails', '~> 4.0.3'
-gem 'turbolinks'
 gem 'uglifier', '>= 1.3.0'
 
 group :development do
