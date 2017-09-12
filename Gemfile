@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'nokogiri', '~> 1.6.0'
 gem 'blacklight', '~> 4.5.0'
 gem 'cancan', '~> 1.6.10'
 gem 'devise', '~> 3.0.3'
@@ -8,7 +9,7 @@ gem 'fastercsv'
 gem 'formtastic', '3.0'
 gem 'jbuilder', '~> 2.0'
 gem 'kaminari', github: 'harai/kaminari', branch: 'route_prefix_prototype'
-gem 'mysql2'
+gem 'mysql2', '0.3.16'
 gem 'net-ldap', '~> 0.1.1', require: 'net/ldap'
 gem 'protected_attributes'
 gem 'rails', '4.0.11'
@@ -27,7 +28,7 @@ gem 'uglifier', '>= 1.3.0'
 group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
-  gem 'byebug'
+  gem 'byebug', '~> 8'
   gem 'jettywrapper'
 end
 

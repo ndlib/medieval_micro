@@ -70,9 +70,7 @@ GEM
     bootstrap-sass (2.3.2.2)
       sass (~> 3.2)
     builder (3.1.4)
-    byebug (2.7.0)
-      columnize (~> 0.3)
-      debugger-linecache (~> 1.2)
+    byebug (8.2.5)
     cancan (1.6.10)
     capistrano (3.6.0)
       airbrussh (>= 1.0.0)
@@ -97,11 +95,9 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.8.0)
-    columnize (0.3.6)
     commonjs (0.2.7)
     database_cleaner (1.0.1)
     debug_inspector (0.0.2)
-    debugger-linecache (1.2.0)
     devise (3.0.4)
       bcrypt-ruby (~> 3.0)
       orm_adapter (~> 0.1)
@@ -253,7 +249,7 @@ DEPENDENCIES
   binding_of_caller
   blacklight (~> 4.5.0)
   bootstrap-sass
-  byebug
+  byebug (~> 8)
   cancan (~> 1.6.10)
   capistrano (~> 3.1)
   capistrano-bundler (~> 1.1.2)
@@ -269,8 +265,9 @@ DEPENDENCIES
   jettywrapper
   jquery-rails
   kaminari!
-  mysql2
+  mysql2 (= 0.3.16)
   net-ldap (~> 0.1.1)
+  nokogiri (~> 1.6.0)
   protected_attributes
   rails (= 4.0.11)
   rb-readline
@@ -282,4 +279,4 @@ DEPENDENCIES
   unicode
 
 BUNDLED WITH
-   1.14.6
+   1.15.4

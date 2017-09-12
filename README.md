@@ -7,6 +7,13 @@ Product Owner: Julia Schneider (jschneid)
 
 ## Setting up your development environment
 
+Install and run mysql5.1:
+Download 5.1 from https://downloads.mysql.com/archives/community/
+```
+export PATH=/usr/local/mysql/bin:/usr/local/mysql/support-files:$PATH
+sudo -u mysql mysql.server start
+```
+
 Install ruby & project dependencies:
 ```
 rbenv install `cat .ruby-version`
@@ -16,13 +23,17 @@ bundle
 
 Create the database and load data from production:
 ```
-mysql.server start
-bundle exec rake db:create db:migrate db:sync[production]
+bundle exec rake db:create db:schema:load db:sync[production]
 ```
 
 Set up Solr:
 ```
 bundle exec rake jetty:clean jetty:configure
+```
+
+Start Solr:
+```
+bundle exec rake jetty:start
 ```
 
 Populate the Solr index with data from the database:
