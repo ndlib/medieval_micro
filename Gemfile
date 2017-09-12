@@ -15,6 +15,7 @@ gem 'protected_attributes'
 gem 'rails', '4.0.11'
 gem 'rb-readline'
 gem 'unicode', platforms: [:mri_18, :mri_19]
+gem 'rake', '11.2.2'
 
 # Assets
 gem 'bootstrap-sass'

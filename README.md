@@ -18,7 +18,7 @@ Install ruby & project dependencies:
 ```
 rbenv install `cat .ruby-version`
 gem install bundler
-bundle
+bundle --path vendor/bundle
 ```
 
 Create the database and load data from production:
@@ -39,4 +39,9 @@ bundle exec rake jetty:start
 Populate the Solr index with data from the database:
 ```
 bundle exec rake solr:index:all
+```
+
+Clear all docs from the Solr development core:
+```
+curl http://localhost:8983/solr/update?commit=true --data '<delete><query>*:*</query></delete>' -H 'Content-type:text/xml; charset=utf-8'
 ```
