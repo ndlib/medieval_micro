@@ -16,17 +16,14 @@
 
     <meta name="viewport" content="width=device-width" />
 
-    <%= favicon_link_tag hesburgh_asset_path(:main, "favicon.ico"), rel: 'shortcut icon', type: 'image/x-icon' %>
-    <%= favicon_link_tag hesburgh_asset_path(:main, "favicon-152.png"), rel: 'shortcut icon', sizes: '128x128', type: 'image/png' %>
-    <%= hesburgh_stylesheet_link_tag active_branch_code, "index.css", :media => "all" %>
+    <%= favicon_link_tag "favicon.ico", rel: 'shortcut icon', type: 'image/x-icon' %>
+    <%= favicon_link_tag "favicon-152.png", rel: 'shortcut icon', sizes: '128x128', type: 'image/png' %>
+    <%= stylesheet_link_tag "index.css", :media => "all" %>
     <!--[if lte IE 9]>
-      <%= hesburgh_stylesheet_link_tag :main, "ie.css", :media => "all" %>
+      <%= stylesheet_link_tag "ie.css", :media => "all" %>
     <![endif]-->
     <%= stylesheet_link_tag "application", :media => "all" %>
-    <% #= hesburgh_javascript_include_tag :main, "index.js" %>
-    <% if branch_site? %>
-      <% #= hesburgh_javascript_include_tag active_branch_code, "index.js" %>
-    <% end %>
+    <% #= javascript_include_tag "index.js" %>
     <%= javascript_include_tag "application" %>
     <%= csrf_meta_tags %>
     <%= raw(render_head_content) %>
@@ -45,7 +42,7 @@
     </script>
 
   </head>
-  <body <%= body_class %>>
+  <body>
   <div id="ajax-modal" class="modal hide fade" tabindex="-1"></div>
     <div class="container" style="width: 100%;max-width:1200px;margin:10px auto;">
       <div class="row content" style="background-color: inherit">
@@ -66,8 +63,9 @@
           if content_for?(:right_column_wide)
             content_width -= 5
           end
+          content_width = 9.humanize
           %>
-          <div class="<%= number_to_word(content_width) %> columns">
+          <div class="<%= content_width %> columns">
             <div id="pg-title">
               <% if content_for?(:content_title_links) %>
                 <div class="pull-right">
@@ -76,7 +74,7 @@
               <% end %>
               <%= content_for(:content_title) %>
             </div>
-            <%= display_notices %>
+
             <%= yield %>
           </div>
           <% if content_for?(:right_column) %>
