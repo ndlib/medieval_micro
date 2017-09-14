@@ -18,7 +18,7 @@
 
     <%= favicon_link_tag "favicon.ico", rel: 'shortcut icon', type: 'image/x-icon' %>
     <%= favicon_link_tag "favicon-152.png", rel: 'shortcut icon', sizes: '128x128', type: 'image/png' %>
-    <%= stylesheet_link_tag "index.css", :media => "all" %>
+    <%= stylesheet_link_tag "hesburgh_assets", :media => "all" %>
     <!--[if lte IE 9]>
       <%= stylesheet_link_tag "ie.css", :media => "all" %>
     <![endif]-->
@@ -33,18 +33,19 @@
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
-    <script src='https://resources.library.nd.edu/frame/code.js' type='text/javascript'></script>
+    <%= javascript_include_tag "http://resources.library.nd.edu/frame/code.js" %>
     <script>
       document.addEventListener("DOMContentLoaded", function(event) {
         const links = []
-        documentReady(links);
+        const titles = [{ title: 'Medieval Institute Library', href: '/'}]
+        documentReady(links, titles);
       });
     </script>
 
   </head>
   <body>
   <div id="ajax-modal" class="modal hide fade" tabindex="-1"></div>
-    <div class="container" style="width: 100%;max-width:1200px;margin:10px auto;">
+    <div class="container">
       <div class="row content" style="background-color: inherit">
         <div class="container">
           <% if content_for?(:left_column) %>

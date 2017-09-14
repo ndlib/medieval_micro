@@ -11,10 +11,10 @@
  *= require_self
  */
 
-@mixin border-radius($radius) { 
-   -webkit-border-radius: $radius; 
-      -moz-border-radius: $radius; 
-           border-radius: $radius; 
+@mixin border-radius($radius) {
+   -webkit-border-radius: $radius;
+      -moz-border-radius: $radius;
+           border-radius: $radius;
  }
 $navbarBorder: #ccc;
 $navbarBackgroundHighlight: #ccc;
@@ -78,7 +78,7 @@ background-color: $endColor;
 // IE 7 + 8 can't handle box-shadow to show active, so we darken a bit ourselves
 &:active,
 &.active {
-background-color: darken($endColor, 10%) \9; 
+background-color: darken($endColor, 10%) \9;
 }
 }
 
@@ -173,7 +173,7 @@ box-shadow: $shadow;
 }
 
 #search + h2 {
-  margin-top: 2em;
+  margin-top: 1em;
 }
 
 #appliedParams {
