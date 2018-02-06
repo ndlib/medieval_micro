@@ -9,7 +9,7 @@ set :bundle_cmd, "/opt/ruby/current/bin/bundle"
 set :application, 'medieval_micro'
 set :scm, :git
 set :repo_url, "git@git.library.nd.edu:medieval_micro"
-set :branch, 'rails-4'
+set :branch, ENV["BRANCH_NAME"] || 'master'
 
 set :keep_releases, 5
 set :linked_dirs, %w{log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}

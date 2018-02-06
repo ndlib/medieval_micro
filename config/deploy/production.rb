@@ -13,7 +13,7 @@
 
 SSHKit.config.command_map[:bundle] = '/opt/ruby/current/bin/bundle'
 SSHKit.config.command_map[:rake] = "#{fetch(:bundle)} exec rake"
-set :branch,    'master' #fetch(:tag, 'rails-4'))
+set :branch,    ENV['BRANCH_NAME'] || 'master'
 set :rails_env, 'production'
 set :deploy_to, '/home/app/medieval_micro'
 set :user,      'app'

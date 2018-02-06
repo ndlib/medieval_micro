@@ -13,7 +13,7 @@
 
 SSHKit.config.command_map[:bundle] = '/opt/ruby/current/bin/bundle'
 SSHKit.config.command_map[:rake] = "#{fetch(:bundle)} exec rake"
-ask :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }.call
+set :branch, ENV['BRANCH_NAME'] || 'master' 
 set :rails_env, 'staging'
 set :deploy_to, '/home/app/medieval_micro'
 set :user,      'app'
