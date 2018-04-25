@@ -5,6 +5,8 @@ Production URL: https://medieval-microfilms-and-facsimiles.library.nd.edu/
 
 Product Owner: Julia Schneider (jschneid)
 
+Github Repository: https://github.com/ndlib/medieval_micro
+
 ## Setting up your development environment
 
 Install and run mysql5.1:
