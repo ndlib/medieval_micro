@@ -8,7 +8,7 @@ set :bundle_flags, "--deployment --path=vendor/bundle"
 set :bundle_cmd, "/opt/ruby/current/bin/bundle"
 set :application, 'medieval_micro'
 set :scm, :git
-set :repo_url, "git@git.library.nd.edu:medieval_micro"
+set :repo_url, "https://github.com/ndlib/medieval_micro.git"
 set :branch, ENV["BRANCH_NAME"] || 'master'
 
 set :keep_releases, 5
