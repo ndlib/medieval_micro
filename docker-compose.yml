@@ -29,8 +29,6 @@ services:
     command: bash docker/rails_entry.sh
     environment:
       BUNDLE_PATH: "/bundle"
-      # FEDORA_HOST: jetty
-      # FEDORA_PORT: 8983
       MYSQL_HOST: mysql
       MYSQL_ROOT_PASSWORD: password
       SOLR_HOST: solr
