@@ -1,15 +1,6 @@
 FROM ruby:2.1.9-slim
 
-RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys AA8E81B4331F7F50 && apt-get update -qq && apt-get install -y build-essential libpq-dev wget nodejs unzip libssl-dev git libmysql++-dev sqlite
-
-# Install Fits (which requires java)
-RUN apt-get install -y default-jre
-RUN mkdir /fits
-WORKDIR /fits
-RUN wget https://projects.iq.harvard.edu/files/fits/files/fits-0.6.2.zip
-RUN unzip fits-0.6.2.zip
-RUN chmod 755 /fits/fits-0.6.2/fits.sh
-ENV PATH="/fits/fits-0.6.2:${PATH}"
+RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys AA8E81B4331F7F50 && apt-get update -qq && apt-get install -y build-essential libpq-dev wget nodejs unzip libssl-dev git libmysql++-dev
 
 # Put the installed gems outside of project_root so that the sync volume won't interfere
 RUN mkdir /bundle
