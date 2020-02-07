@@ -1,0 +1,71 @@
+<%
+  socket = [
+  ENV["BOXEN_MYSQL_SOCKET"],
+  "/var/run/mysql5/mysqld.sock",
+  "/tmp/mysql.sock"
+  ].detect { |f| f && File.exist?(f) }
+
+  port = ENV["BOXEN_MYSQL_PORT"] || "3306"
+%>
+
+# Shared Settings
+mysql_settings: &mysql_settings
+  adapter:   mysql2
+  encoding:  utf8
+  reconnect: false
+  pool:      5
+
+mysql_connection: &mysql_connection
+<% if socket %>
+  host: localhost
+  socket: <%= socket %>
+<% else %>
+  host: 127.0.0.1
+  port: <%= port %>
+<% end %>
+
+mysql_user: &mysql_user
+<% if ENV['BOXEN_HOME'] %>
+  username: root
+  password: ''
+<% else %>
+  username: root
+  password: ''
+<% end %>
+
+local_user: &local_user
+  <<: *mysql_settings
+  <<: *mysql_connection
+  username: root
+  password: password
+
+development: &development
+  <<: *local_user
+  database: medieval_development
+  timeout: 5000
+  host: mysql
+
+development_remote_purl_database:
+  <<: *development
+
+test: &test
+  <<: *development
+  database: medieval_test
+
+test_remote_purl_database:
+  <<: *test
+
+ci: &ci
+  <<: *test
+
+ci_remote_purl_database:
+  <<: *ci
+
+# Environments
+production:
+  adapter:   mysql2
+  encoding:  utf8
+  database: 
+  host:     
+  username: 
+  password: 
