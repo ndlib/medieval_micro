@@ -1,0 +1,7 @@
+FROM geerlingguy/solr:4.10.4
+
+COPY solr_conf/solr.xml /opt/solr/example/solr/solr.xml
+COPY solr_conf/conf/ /opt/solr/example/solr/development-core/conf/ 
+COPY solr_conf/conf/ /opt/solr/example/solr/test-core/conf/ 
+
+RUN chown solr /opt/solr/example/solr/solr.xml && chown -R solr /opt/solr/example/solr/development-core/conf/ && chown -R solr /opt/solr/example/solr/test-core/conf/

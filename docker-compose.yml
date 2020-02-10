@@ -1,0 +1,45 @@
+# Rails container currently needs to be restarted after the docker-compose is brought up, as it depends on the mysql service which takes more than 15 seconds to start.
+version: '3'
+services:
+  mysql:
+    build:
+      context: ./docker/
+      dockerfile: Dockerfile.mariadb
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: medieval_development
+    volumes:
+      - ./docker/mysql-utf8.cnf:/etc/mysql/conf.d/mysql-utf8.cnf
+    healthcheck:
+        interval: 30s
+        timeout: 10s
+        retries: 5
+  solr:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.solr
+    ports:
+      - "8983:8983"
+  rails:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.rails
+    command: bash docker/rails_entry.sh
+    environment:
+      BUNDLE_PATH: "/bundle"
+      MYSQL_HOST: mysql
+      MYSQL_ROOT_PASSWORD: password
+      SOLR_HOST: solr
+      SOLR_PORT: 8983
+      # Need to pass the user running docker into the container so that
+      # config/admin_usernames.yml pulls in the user as an admin. This is
+      # to replicate existing behavior on OSX and may not work correctly on
+      # another OS
+      USER: #{USER}
+    ports:
+      - "3000:3000"
+    depends_on:
+      - mysql
+      - solr
