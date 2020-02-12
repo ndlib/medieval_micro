@@ -26,8 +26,9 @@ MedievalMicro::Application.configure do
   config.assets.js_compressor = :uglifier
   # config.assets.css_compressor = :sass
 
-  # Do not fallback to assets pipeline if a precompiled asset is missed.
-  config.assets.compile = false
+  # If true, fallback to assets pipeline if asset does not exist
+  # If false, rely on precompiled assets
+  config.assets.compile = ENV.fetch("WITHOUT_ASSET_PRECOMPILE", false)
 
   # Generate digests for assets URLs.
   config.assets.digest = true

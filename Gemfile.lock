@@ -1,5 +1,5 @@
 GIT
-  remote: git://github.com/harai/kaminari.git
+  remote: https://github.com/harai/kaminari.git
   revision: 384fcb5d11b66a0cc8fad030104bf80f82616355
   branch: route_prefix_prototype
   specs:
@@ -54,14 +54,14 @@ GEM
       rack (>= 0.9.0)
     binding_of_caller (0.8.0)
       debug_inspector (>= 0.0.1)
-    blacklight (4.5.0)
+    blacklight (4.8.0)
       bootstrap-sass (>= 2.2.0, < 2.4)
+      deprecation (~> 0.1)
       kaminari (~> 0.13)
       marc (>= 0.4.3, < 1.1)
       nokogiri (~> 1.6)
-      rails (>= 3.2.6, < 5)
+      rails (~> 4.0)
       rsolr (~> 1.0.6)
-      sass-rails
     bootstrap-sass (2.3.2.2)
       sass (~> 3.2)
     builder (3.2.4)
@@ -90,10 +90,12 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.12.2)
-    concurrent-ruby (1.1.5)
+    concurrent-ruby (1.1.6)
     crass (1.0.6)
     database_cleaner (1.0.1)
     debug_inspector (0.0.3)
+    deprecation (0.99.0)
+      activesupport
     devise (3.4.1)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -247,7 +249,7 @@ PLATFORMS
 DEPENDENCIES
   better_errors
   binding_of_caller
-  blacklight (~> 4.5.0)
+  blacklight (~> 4.8.0)
   bootstrap-sass
   byebug (~> 8)
   cancan (~> 1.6.10)
@@ -279,4 +281,4 @@ DEPENDENCIES
   unicode
 
 BUNDLED WITH
-   1.15.4
+   1.17.3

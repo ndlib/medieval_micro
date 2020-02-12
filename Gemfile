@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'nokogiri', '~> 1.6.0'
-gem 'blacklight', '~> 4.5.0'
+gem 'blacklight', '~> 4.8.0'
 gem 'cancan', '~> 1.6.10'
 gem 'devise', '~> 3.4.0'
 gem 'devise_cas_authenticatable', '~> 1.3.2'
