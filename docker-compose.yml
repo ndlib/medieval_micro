@@ -1,4 +1,6 @@
-# Rails container currently needs to be restarted after the docker-compose is brought up, as it depends on the mysql service which takes more than 15 seconds to start.
+# To start Solr and MySQL as background daemon: docker-compose up -d
+# To also start up the rails app as background daemon: docker-compose -f docker-compose.yml -f docker-compose-rails.yml up -d
+# Both of the above commands run from the root of the repository
 version: '3'
 services:
   mysql:
@@ -22,24 +24,3 @@ services:
       dockerfile: docker/Dockerfile.solr
     ports:
       - "8983:8983"
-  rails:
-    build:
-      context: .
-      dockerfile: docker/Dockerfile.rails
-    command: bash docker/rails_entry.sh
-    environment:
-      BUNDLE_PATH: "/bundle"
-      MYSQL_HOST: mysql
-      MYSQL_ROOT_PASSWORD: password
-      SOLR_HOST: solr
-      SOLR_PORT: 8983
-      # Need to pass the user running docker into the container so that
-      # config/admin_usernames.yml pulls in the user as an admin. This is
-      # to replicate existing behavior on OSX and may not work correctly on
-      # another OS
-      USER: #{USER}
-    ports:
-      - "3000:3000"
-    depends_on:
-      - mysql
-      - solr
