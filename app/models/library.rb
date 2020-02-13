@@ -17,7 +17,7 @@ class Library < ActiveRecord::Base
 
   validates_presence_of :name
 
-  default_scope order :name
+  default_scope {order :name}
 
   scope :ordered, lambda { |*order|
     order( order.flatten.first || 'name' )

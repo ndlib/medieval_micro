@@ -18,13 +18,13 @@ class User < ActiveRecord::Base
 
   accepts_nested_attributes_for :default_attribute_values
 
-  default_scope :order => 'last_name, first_name'
+  default_scope { order:'last_name, first_name'}
   scope :ordered, lambda { |*order|
     { :order => order.flatten.first || 'last_name, first_name' }
   }
 
-  scope :non_privileged, :conditions => ["#{quoted_table_name}.`administrator` = ?", false]
-  scope :administrators, :conditions => ["#{quoted_table_name}.`administrator` = ?", true]
+  scope :non_privileged, -> { where(:conditions => ["#{quoted_table_name}.`administrator` = ?", false]) }
+  scope :administrators, -> { where(:conditions => ["#{quoted_table_name}.`administrator` = ?", true]) }
 
   def self.ldap_lookup(username)
     return nil if username.blank?

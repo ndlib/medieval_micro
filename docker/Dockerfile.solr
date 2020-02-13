@@ -1,7 +1,12 @@
 FROM geerlingguy/solr:4.10.4
 
+RUN apt-get update -y && apt-get -y install wget
+
 COPY solr_conf/solr.xml /opt/solr/example/solr/solr.xml
 COPY solr_conf/conf/ /opt/solr/example/solr/development-core/conf/ 
-COPY solr_conf/conf/ /opt/solr/example/solr/test-core/conf/ 
+COPY solr_conf/conf/ /opt/solr/example/solr/test-core/conf/
+RUN mkdir /opt/solr/example/solr/development-core/lib && mkdir /opt/solr/example/solr/test-core/lib 
+RUN cd /opt/solr/example/solr/development-core/lib && wget https://repo1.maven.org/maven2/com/ibm/icu/icu4j/59.1/icu4j-59.1.jar && wget https://repo1.maven.org/maven2/org/apache/lucene/lucene-analyzers-icu/4.10.4/lucene-analyzers-icu-4.10.4.jar
+RUN cd /opt/solr/example/solr/test-core/lib && wget https://repo1.maven.org/maven2/com/ibm/icu/icu4j/59.1/icu4j-59.1.jar && wget https://repo1.maven.org/maven2/org/apache/lucene/lucene-analyzers-icu/4.10.4/lucene-analyzers-icu-4.10.4.jar
 
-RUN chown solr /opt/solr/example/solr/solr.xml && chown -R solr /opt/solr/example/solr/development-core/conf/ && chown -R solr /opt/solr/example/solr/test-core/conf/
+RUN chown solr /opt/solr/example/solr/solr.xml && chown -R solr /opt/solr/example/solr/development-core/ && chown -R solr /opt/solr/example/solr/test-core/

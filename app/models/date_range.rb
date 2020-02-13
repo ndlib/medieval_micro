@@ -15,7 +15,7 @@ class DateRange < ActiveRecord::Base
   has_and_belongs_to_many :facsimiles, :uniq => true
   validates_uniqueness_of :code
 
-  default_scope order('`date_ranges`.`start_date` ASC')
+  default_scope { order('`date_ranges`.`start_date` ASC') }
 
   attr_accessible :name, :code, :start_date, :end_date
 

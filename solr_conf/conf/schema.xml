@@ -200,7 +200,11 @@
      <fieldType name="text" class="solr.TextField" positionIncrementGap="100">
        <analyzer>
          <tokenizer class="solr.StandardTokenizerFactory"/>
-         <!-- <filter class="solr.ICUFoldingFilterFactory" /> -->
+         <!-- ICUFoldingFactory allows searches to be case-insensitive. It also requires additional
+         JAR files to be in core_name/lib:
+         https://repo1.maven.org/maven2/com/ibm/icu/icu4j/59.1/icu4j-59.1.jar 
+         https://repo1.maven.org/maven2/org/apache/lucene/lucene-analyzers-icu/4.10.4/lucene-analyzers-icu-4.10.4.jar -->
+         <filter class="solr.ICUFoldingFilterFactory" />
          <filter class="solr.StopFilterFactory" ignoreCase="true" words="stopwords.txt" enablePositionIncrements="true" />
          <filter class="solr.SnowballPorterFilterFactory" language="English" />
        </analyzer>

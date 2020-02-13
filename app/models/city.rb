@@ -14,11 +14,11 @@ class City < ActiveRecord::Base
   has_many :libraries
   validates_presence_of :name
 
-  default_scope order :name
+  default_scope { order :name }
   attr_accessible :name, :name_variants, :notes
 
-  scope :ordered, :order => 'name ASC'
-  scope :attributes_for_select_list, :select => '`name`, `id`'
+  scope :ordered, -> { where(:order => ['name ASC']) }
+  scope :attributes_for_select_list, -> { where(:select =>[ '`name`, `id`']) }
   scope :with_name_like, lambda { |*name|
     where("#{quoted_table_name}.`name` LIKE ?", "%#{name.flatten.first}%") unless name.flatten.first.blank?
   }

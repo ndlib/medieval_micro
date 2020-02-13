@@ -12,7 +12,7 @@
 class Collection < ActiveRecord::Base
   has_many :microfilms
 
-  default_scope order :name
+  default_scope {order :name}
 
   scope :ordered, lambda { |*order|
     order( order.flatten.first || 'name')

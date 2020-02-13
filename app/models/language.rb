@@ -13,7 +13,7 @@ class Language < ActiveRecord::Base
   validates_presence_of   :name
   validates_uniqueness_of :name
 
-  default_scope order :name
+  default_scope {order :name}
   scope :with_name_like, lambda { |*name|
     where("#{quoted_table_name}.`name` LIKE ?", "%#{name.flatten.first}%") unless name.flatten.first.blank?
   }
