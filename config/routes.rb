@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
   root :to => "catalog#index"
   Blacklight.add_routes(self)
-  devise_for :users
+  devise_for :users, controllers: { omniauth_callbacks: "admin/omniauth_callbacks" }
+  devise_scope :user do
+    get 'sign_in', to: redirect("/users/auth/oktaoauth", status: 301), as: :new_user_session
+    delete 'sign_out', :to => 'devise/sessions#destroy', :as => :destroy_session
+  end
+
   resources :users
 
   namespace 'admin' do

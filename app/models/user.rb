@@ -3,10 +3,10 @@ require 'net/ldap'
 class User < ActiveRecord::Base
 
   attr_accessible :email, :password, :password_confirmation if Rails::VERSION::MAJOR < 4
-# Connects this user object to Blacklights Bookmarks. 
+# Connects this user object to Blacklights Bookmarks.
   include Blacklight::User
 
-  devise :cas_authenticatable, :rememberable, :trackable
+  devise :omniauthable, :rememberable, :trackable, omniauth_providers: [:oktaoauth]
 
   #before_validation :fetch_attributes_from_ldap
 
