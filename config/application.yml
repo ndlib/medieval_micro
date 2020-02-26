@@ -1,0 +1,7 @@
+# Add application configuration variables here, as shown below.
+#
+okta_auth_server_id: "fake"
+okta_client_id: "fake"
+okta_client_secret: "fake"
+okta_redirect_uri: "http://localhost:3000/users/auth/oktaoauth/callback"
+okta_site: "https://nd.okta.com/"

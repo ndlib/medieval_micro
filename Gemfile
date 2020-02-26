@@ -16,6 +16,7 @@ gem 'rb-readline'
 gem 'unicode', platforms: [:mri_18, :mri_19]
 gem 'rake', '11.2.2'
 gem 'humanize', '~> 1.4.0'
+gem 'figaro'
 
 # Assets
 gem 'bootstrap-sass'
