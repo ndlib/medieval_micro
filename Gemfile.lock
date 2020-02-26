@@ -1,5 +1,5 @@
 GIT
-  remote: git://github.com/harai/kaminari.git
+  remote: https://github.com/harai/kaminari.git
   revision: 384fcb5d11b66a0cc8fad030104bf80f82616355
   branch: route_prefix_prototype
   specs:
@@ -141,18 +141,17 @@ GEM
       scrub_rb (>= 1.0.1, < 2)
       unf
     mini_mime (1.0.2)
-    mini_portile2 (2.4.0)
+    mini_portile2 (2.1.0)
     minitest (5.12.0)
     multi_json (1.14.1)
     multi_xml (0.6.0)
     multipart-post (2.1.1)
     mysql2 (0.3.17)
-    net-ldap (0.1.1)
     net-scp (2.0.0)
       net-ssh (>= 2.6.5, < 6.0.0)
     net-ssh (4.2.0)
-    nokogiri (1.10.8)
-      mini_portile2 (~> 2.4.0)
+    nokogiri (1.6.8.1)
+      mini_portile2 (~> 2.1.0)
     oauth2 (1.4.4)
       faraday (>= 0.8, < 2.0)
       jwt (>= 1.0, < 3.0)
@@ -283,8 +282,7 @@ DEPENDENCIES
   jquery-rails
   kaminari!
   mysql2 (= 0.3.17)
-  net-ldap (~> 0.1.1)
-  nokogiri (~> 1.10.8)
+  nokogiri (~> 1.6.0)
   omniauth-oktaoauth
   protected_attributes
   rails (~> 4.2.0)
