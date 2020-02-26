@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'nokogiri', '~> 1.6.0'
+gem 'nokogiri', '~> 1.10.8'
 gem 'blacklight', '~> 4.8.0'
 gem 'cancan', '~> 1.6.10'
 gem 'devise', '~> 3.4.0'
