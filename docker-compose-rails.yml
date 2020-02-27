@@ -1,4 +1,10 @@
 # Rails container currently needs to be restarted after the docker-compose is brought up, as it depends on the mysql service which takes more than 15 seconds to start.
+#
+# To look at the Rails logs for development:
+# $ docker exec -t medieval_micro_rails_1 cat log/development.log
+#
+# To spin down the Rails application:
+# $ docker-compose down --remove-orphans
 version: '3'
 services:
   rails:
