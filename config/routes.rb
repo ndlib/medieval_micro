@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
   root :to => "catalog#index"
   Blacklight.add_routes(self)
-  devise_for :users
+  devise_for :users, controllers: { omniauth_callbacks: "admin/omniauth_callbacks" }
+  devise_scope :user do
+    get 'sign_in', to: redirect("/users/auth/oktaoauth", status: 301), as: :new_user_session
+    get 'sign_out', :to => 'devise/sessions#destroy', :as => :destroy_user_session
+  end
+
   resources :users
 
   namespace 'admin' do
@@ -21,7 +26,6 @@ Rails.application.routes.draw do
 
   get 'admin'          => 'admin/microfilms#index'
   get 'error'          => 'error#test'
-  get 'ldap_query'     => 'admin/ldap_query#find'
   get 'logout'         => 'admin/users#logout'
   get 'users/:id/edit' => 'admin/users#edit', :as => :edit_user_registration_path
 

@@ -1,16 +1,14 @@
 source 'https://rubygems.org'
 
-gem 'nokogiri', '~> 1.10.8'
+gem 'nokogiri', '~> 1.6.0'
 gem 'blacklight', '~> 4.8.0'
 gem 'cancan', '~> 1.6.10'
 gem 'devise', '~> 3.4.0'
-gem 'devise_cas_authenticatable', '~> 1.3.2'
 gem 'fastercsv'
 gem 'formtastic', '3.0'
 gem 'jbuilder', '~> 2.0'
 gem 'kaminari', github: 'harai/kaminari', branch: 'route_prefix_prototype'
-gem 'mysql2', '0.3.16'
-gem 'net-ldap', '~> 0.1.1', require: 'net/ldap'
+gem 'mysql2', '0.3.17'
 gem 'omniauth-oktaoauth'
 gem 'protected_attributes'
 gem 'rails', '~> 4.2.0'
@@ -18,6 +16,7 @@ gem 'rb-readline'
 gem 'unicode', platforms: [:mri_18, :mri_19]
 gem 'rake', '11.2.2'
 gem 'humanize', '~> 1.4.0'
+gem 'figaro'
 
 # Assets
 gem 'bootstrap-sass'
