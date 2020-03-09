@@ -1,12 +1,21 @@
-FROM geerlingguy/solr:4.10.4
+FROM java:8-jre
 
-RUN apt-get update -y && apt-get -y install wget
+RUN wget http://archive.apache.org/dist/lucene/solr/4.10.4/solr-4.10.4.zip
 
-COPY solr_conf/solr.xml /opt/solr/example/solr/solr.xml
-COPY solr_conf/conf/ /opt/solr/example/solr/development-core/conf/ 
-COPY solr_conf/conf/ /opt/solr/example/solr/test-core/conf/
-RUN mkdir /opt/solr/example/solr/development-core/lib && mkdir /opt/solr/example/solr/test-core/lib 
-RUN cd /opt/solr/example/solr/development-core/lib && wget https://repo1.maven.org/maven2/com/ibm/icu/icu4j/59.1/icu4j-59.1.jar && wget https://repo1.maven.org/maven2/org/apache/lucene/lucene-analyzers-icu/4.10.4/lucene-analyzers-icu-4.10.4.jar
-RUN cd /opt/solr/example/solr/test-core/lib && wget https://repo1.maven.org/maven2/com/ibm/icu/icu4j/59.1/icu4j-59.1.jar && wget https://repo1.maven.org/maven2/org/apache/lucene/lucene-analyzers-icu/4.10.4/lucene-analyzers-icu-4.10.4.jar
+RUN unzip -d . -qo solr-4.10.4.zip
 
-RUN chown solr /opt/solr/example/solr/solr.xml && chown -R solr /opt/solr/example/solr/development-core/ && chown -R solr /opt/solr/example/solr/test-core/
+RUN rm solr-4.10.4.zip
+
+COPY solr_conf/solr.xml /var/solr/solr.xml
+COPY solr_conf/conf/ /var/solr/development-core/conf/ 
+COPY solr_conf/conf/ /var/solr/test-core/conf/
+
+RUN mkdir /var/solr/development-core/lib && mkdir /var/solr/test-core/lib
+RUN cd /var/solr/development-core/lib && wget https://repo1.maven.org/maven2/com/ibm/icu/icu4j/59.1/icu4j-59.1.jar && wget https://repo1.maven.org/maven2/org/apache/lucene/lucene-analyzers-icu/4.10.4/lucene-analyzers-icu-4.10.4.jar
+RUN cd /var/solr/test-core/lib && wget https://repo1.maven.org/maven2/com/ibm/icu/icu4j/59.1/icu4j-59.1.jar && wget https://repo1.maven.org/maven2/org/apache/lucene/lucene-analyzers-icu/4.10.4/lucene-analyzers-icu-4.10.4.jar
+
+
+#RUN chown solr /opt/solr/example/solr/solr.xml && chown -R solr /opt/solr/example/solr/development-core/ && chown -R solr /opt/solr/example/solr/test-core/
+
+ENV SOLR_HOME /solr-4.10.4
+WORKDIR /solr-4.10.4
