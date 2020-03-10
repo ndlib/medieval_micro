@@ -15,3 +15,7 @@ COPY . /project_root
 
 # Gemfile.lock may have changed after bundling, copy it back into the project_root
 RUN cp /bundle/Gemfile.lock /project_root/
+
+COPY docker/database.yml /project_root/config/database.yml
+
+RUN bundle exec rake assets:precompile
