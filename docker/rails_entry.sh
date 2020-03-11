@@ -19,5 +19,5 @@ bundle exec rake solr:index:all
 ### Uncomment below for development ###
 # exec bundle exec rails s -e development -b 0.0.0.0 
 
-### Comment out below for development ###
+### Comment out below for production ###
 exec bundle exec rails s
