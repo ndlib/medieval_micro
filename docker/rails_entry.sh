@@ -1,16 +1,23 @@
 # All the things that will execute when starting the rails service
 # Copy the generated lock file back into the project root. This is to sync this change back to the
 # application after the container has mounted the sync volume
-cp /bundle/Gemfile.lock ./
-chmod a+x ./docker/wait-for-it.sh
-bash docker/wait-for-it.sh mysql:3306
-# bundle exec rake db:create db:schema:load
-# If we find people are ok with just starting a shell in the container and running the db create/load before running specs, then we can remove this
-# RAILS_ENV=development bundle exec rake db:create db:schema:load
-# Precompile Assets
-bundle exec rake RAILS_ENV=development assets:precompile
-#bundle exec rake RAILS_ENV=development db:migrate
-#bundle exec rake RAILS_ENV=development jetty:clean jetty:configure
-bundle exec rake RAILS_ENV=development solr:index:all
 
-exec bundle exec rails s -e development -b 0.0.0.0 # -p 3000 # --ssl --ssl-key-file dev_server_keys/server.key --ssl-cert-file dev_server_keys/server.crt
+cp /bundle/Gemfile.lock ./
+
+# Have to do this here to allow using localhost when deployed with ECS awsvpc
+# Could not see a way to have this solr.yml read env
+sed -i "s;\${SOLR_URL};$SOLR_URL;g" /project_root/config/solr.yml
+
+### Wait for dependencies
+bash docker/wait-for-it.sh -t 120 ${DB_HOST}:3306
+bash docker/wait-for-it.sh -t 120 ${SOLR_HOST}:8983
+
+# In production we'll be using a persistant database, but not a solr instance,
+# so reindex everything on start
+bundle exec rake solr:index:all
+
+### Uncomment below for development ###
+# exec bundle exec rails s -e development -b 0.0.0.0 
+
+### Comment out below for development ###
+exec bundle exec rails s
