@@ -82,4 +82,9 @@ MedievalMicro::Application.configure do
 
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
   config.application_root_url = "medieval-micro-prod.library.nd.edu"
+
+ # Log to StOut for CloudWatch
+ if ENV["RAILS_LOG_TO_STDOUT"].present?
+  config.logger = ActiveSupport::TaggedLogging.new(Logger.new(STDOUT))
+end
 end
