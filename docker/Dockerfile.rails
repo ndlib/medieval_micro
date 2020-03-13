@@ -17,5 +17,6 @@ COPY . /project_root
 RUN cp /bundle/Gemfile.lock /project_root/
 
 COPY docker/database.yml /project_root/config/database.yml
+COPY docker/solr.yml /project_root/config/solr.yml
 
 RUN bundle exec rake assets:precompile

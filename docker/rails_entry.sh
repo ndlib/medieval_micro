@@ -20,4 +20,4 @@ bundle exec rake solr:index:all
 # exec bundle exec rails s -e development -b 0.0.0.0 
 
 ### Comment out below for production ###
-exec bundle exec rails s
+exec bundle exec rails s -b 0.0.0.0
