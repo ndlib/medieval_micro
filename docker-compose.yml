@@ -1,7 +1,7 @@
 # To start Solr and MySQL as background daemon: docker-compose up -d
 # To also start up the rails app as background daemon: docker-compose -f docker-compose.yml -f docker-compose-rails.yml up -d
 # Both of the above commands run from the root of the repository
-version: '3'
+version: '3.2'
 services:
   mysql:
     build:
@@ -10,14 +10,40 @@ services:
     ports:
       - "3306:3306"
     environment:
-      MYSQL_ROOT_PASSWORD: password
-      MYSQL_DATABASE: medieval_development
+      MYSQL_USER: ${DB_USERNAME}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${DB_NAME}
     volumes:
       - ./docker/mysql-utf8.cnf:/etc/mysql/conf.d/mysql-utf8.cnf
     healthcheck:
         interval: 30s
         timeout: 10s
         retries: 5
+  rails:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.rails
+    command: bash docker/rails_entry.sh
+    environment:
+      RAILS_ENV: development
+      DB_HOST: mysql
+      DB_USERNAME: ${DB_USERNAME}
+      DB_PASSWORD: ${DB_PASSWORD}
+      DB_NAME: ${DB_NAME}
+      SOLR_URL: http://solr:8983/solr
+      SOLR_HOST: solr
+      SOLR_PORT: 8983
+      # Need to pass the user running docker into the container so that
+      # config/admin_usernames.yml pulls in the user as an admin. This is
+      # to replicate existing behavior on OSX and may not work correctly on
+      # another OS
+      USER: #{USER}
+    ports:
+      - "3000:3000"
+    depends_on:
+      - mysql
+      - solr
   solr:
     build:
       context: .
