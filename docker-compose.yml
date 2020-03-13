@@ -10,8 +10,10 @@ services:
     ports:
       - "3306:3306"
     environment:
-      MYSQL_ROOT_PASSWORD: password
-      MYSQL_DATABASE: medieval_development
+      MYSQL_USER: ${DB_USERNAME}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${DB_NAME}
     volumes:
       - ./docker/mysql-utf8.cnf:/etc/mysql/conf.d/mysql-utf8.cnf
     healthcheck:
@@ -25,9 +27,9 @@ services:
     command: bash docker/rails_entry.sh
     environment:
       RAILS_ENV: development
-      BUNDLE_PATH: "/bundle"
-      MYSQL_HOST: mysql
-      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+      DB_HOST: mysql
+      DB_USERNAME: ${DB_USERNAME}
+      DB_PASSWORD: ${DB_PASSWORD}
       DB_NAME: ${DB_NAME}
       SOLR_HOST: solr
       SOLR_PORT: 8983
