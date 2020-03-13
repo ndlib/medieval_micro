@@ -1,6 +1,6 @@
 development:
   url: 'http://solr:8983/solr'
 pre_production:
-  url: 'http://localhost:8080/solr/medieval_micro
+  url: 'http://localhost:8080/solr/medieval_micro'
 production:
   url: 'http://localhost:8080/solr/medieval_micro'
