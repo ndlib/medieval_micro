@@ -1,0 +1,12 @@
+compose: &compose
+  url: ${SOLR_URL}
+development:
+  <<: *compose
+test:
+  <<: *compose
+cucumber:
+  <<: *compose
+pre_production:
+  <<: *compose
+production:
+  <<: *compose
