@@ -1,0 +1,171 @@
+{
+	"info": {
+		"_postman_id": "d9e882e8-673b-487b-aec5-570f33417f1d",
+		"name": "Medieval Microfilms",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Smoke",
+			"item": [
+				{
+					"name": "Get Root",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "a8c348b1-d1dc-4dc1-8929-a69dbe557d15",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{host}}/",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Search",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{host}}/?utf8=%E2%9C%93&active_branch_code=medieval_library&q=Italy",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								""
+							],
+							"query": [
+								{
+									"key": "utf8",
+									"value": "%E2%9C%93"
+								},
+								{
+									"key": "active_branch_code",
+									"value": "medieval_library"
+								},
+								{
+									"key": "q",
+									"value": "Italy"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Microfilms",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{host}}/?active_branch_code=medieval_library&f%5Bformat%5D%5B%5D=Microfilm&utf8=%E2%9C%93",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								""
+							],
+							"query": [
+								{
+									"key": "active_branch_code",
+									"value": "medieval_library"
+								},
+								{
+									"key": "f%5Bformat%5D%5B%5D",
+									"value": "Microfilm"
+								},
+								{
+									"key": "utf8",
+									"value": "%E2%9C%93"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Facsimiles",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://{{host}}/?active_branch_code=medieval_library&f%5Bformat%5D%5B%5D=Facsimile&utf8=%E2%9C%93",
+							"protocol": "http",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								""
+							],
+							"query": [
+								{
+									"key": "active_branch_code",
+									"value": "medieval_library"
+								},
+								{
+									"key": "f%5Bformat%5D%5B%5D",
+									"value": "Facsimile"
+								},
+								{
+									"key": "utf8",
+									"value": "%E2%9C%93"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "## Smoke Tests for the Medieval Microfilms and Facsimiles service",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "9236002a-38f0-427a-af7f-dfc35a781802",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "7a9f7055-f54a-41ad-ae3f-8701453dc741",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Response time is less than 1000ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+							"});",
+							""
+						]
+					}
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
