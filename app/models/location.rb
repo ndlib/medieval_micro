@@ -12,10 +12,10 @@
 class Location < ActiveRecord::Base
   has_many :microfilms
 
-  default_scope {order :name}
+  default_scope { order :name }
 
-  scope :ordered, -> { where(:order => 'name ASC') }
-  scope :attributes_for_select_list, -> { where(:select => ['`name`, `id`']) }
+  scope :ordered, -> { order('name ASC') }
+  scope :attributes_for_select_list, -> { select(:name, :id) }
 
   attr_accessible :name, :notes
 
