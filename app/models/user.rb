@@ -16,11 +16,8 @@ class User < ActiveRecord::Base
 
   default_scope { order([:last_name, :first_name]) }
   scope :ordered, lambda { |*order|
-    { :order => order.flatten.first || [:last_name, :first_name] }
+    order( order.flatten.first || [:last_name, :first_name] )
   }
-
-  scope :non_privileged, -> { where(:conditions => ["#{quoted_table_name}.`administrator` = ?", false]) }
-  scope :administrators, -> { where(:conditions => ["#{quoted_table_name}.`administrator` = ?", true]) }
 
   def self.create_user_with_username(username)
     new_user = User.new(:username => username)
