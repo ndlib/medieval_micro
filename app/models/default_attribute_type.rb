@@ -3,7 +3,7 @@
 # Table name: default_attribute_types
 #
 #  id             :integer          not null, primary key
-#  model_name     :string(255)
+#  model_class_name     :string(255)
 #  attribute_name :string(255)
 #  is_model_id    :boolean
 #  created_at     :datetime
