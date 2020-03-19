@@ -26,7 +26,21 @@ module ApplicationHelper
   end
 
   def icon_destroy_admin_link(model, message)
-    link_to image_tag('icons/bin_closed.png', :alt => 'Destroy', :title => 'Destroy'), { :controller => "admin/#{model.class.to_s.tableize}", :action => 'destroy', :id => model}, :confirm => message, :method => :delete, :class => 'icon-link'
+    link_to(
+      image_tag(
+        'icons/bin_closed.png',
+        :alt => 'Destroy',
+        :title => 'Destroy'
+      ), {
+        :controller => "admin/#{model.class.to_s.tableize}",
+        :action => 'destroy',
+        :id => model
+      }, {
+        :data => { :confirm => message },
+        :method => :delete,
+        :class => 'icon-link'
+      }
+    )
   end
 
   def edit_record_link
