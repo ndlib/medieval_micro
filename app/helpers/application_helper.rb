@@ -30,10 +30,10 @@ module ApplicationHelper
   end
 
   def edit_record_link
-    model_name, id = params[:id].split('-')
+    model_class_name, id = params[:id].split('-')
 
-    if can? :edit, model_name.camelize.constantize
-      link_to 'Edit this Record', url_for(:controller => "admin/#{model_name.pluralize}", :action => 'edit', :id => id), :class => 'edit-record'
+    if can? :edit, model_class_name.camelize.constantize
+      link_to 'Edit this Record', url_for(:controller => "admin/#{model_class_name.pluralize}", :action => 'edit', :id => id), :class => 'edit-record'
     end
   end
 

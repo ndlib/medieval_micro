@@ -3,7 +3,7 @@
   <%= form.label :default_attribute_type_value, form.object.default_attribute_type.attribute_name.titleize %>
   <% if form.object.default_attribute_type.is_model_id? %>
     <%= form.collection_select :value,
-                               form.object.default_attribute_type.model_name.camelize.constantize.ordered.all,
+                               form.object.default_attribute_type.model_class_name.camelize.constantize.ordered.all,
                                :id,
                                :collection_name,
                                :prompt => 'Please make a selection',
