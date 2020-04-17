@@ -37,7 +37,7 @@ class Role < ActiveRecord::Base
     user_ids = []
     @usernames ||= []
     @usernames.each do |username|
-      user_ids << User.find_or_create_user_by_username(username).id unless username.blank?
+      user_ids << User.find_or_create_by(username: username).id unless username.blank?
     end
     user_ids.uniq!
     self.user_ids = user_ids
