@@ -24,6 +24,7 @@ class Classification < ActiveRecord::Base
   after_destroy :update_related_models
 
   attr_accessor :replacement_classification_id
+  attr_accessible :replacement_classification_id
 
   def self.create_with_name(name)
     return nil if name.nil?
