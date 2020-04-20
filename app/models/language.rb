@@ -55,7 +55,12 @@ class Language < ActiveRecord::Base
   end
 
   def update_related_models
-    facsimiles.collect{|facsimile| facsimile.to_solr}
+    # Because of the above #replace_with_another_language_if_provided, Rails
+    # cached the facsimilies, and was reindexing them as per their cached
+    # value. This resulted in no effective change. By adding a reload
+    # imperative, the facsimiles are updated to belong to another
+    # country.
+    facsimiles.reload.collect{|facsimile| facsimile.to_solr}
     Blacklight.solr.commit
   end
 end
