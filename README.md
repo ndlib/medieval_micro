@@ -7,6 +7,8 @@ Product Owner: Julia Schneider (jschneid)
 
 Github Repository: https://github.com/ndlib/medieval_micro
 
+Visit the Service Runbook: [Medieval Microfilms and Facsimiles](https://github.com/ndlib/TechnologistsPlaybook/tree/master/run-books/medieval-micro.md)
+
 ## Setting up your development environment
 
 Install and run mysql5.1:
